@@ -5,11 +5,12 @@ import { NgFor } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { PreviousRankPipe } from '../../previous-rank.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-topten',
   standalone: true,
-  imports: [RouterLink, NgFor, MatToolbarModule, NavigationComponent, PreviousRankPipe 
+  imports: [RouterLink, NgFor, MatToolbarModule, NavigationComponent, PreviousRankPipe ,HttpClientModule
   ],
   templateUrl: './topten.component.html',
   styleUrl: './topten.component.scss'

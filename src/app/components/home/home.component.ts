@@ -3,7 +3,7 @@ import { EloService } from '../../services/elo.service';
 import { ImageService } from '../../services/image.service';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -20,7 +20,8 @@ import { NavigationComponent } from '../navigation/navigation.component';
     MatFormFieldModule,
     NavigationComponent,
     RouterLink,
-    NgIf
+    NgIf,
+    HttpClientModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

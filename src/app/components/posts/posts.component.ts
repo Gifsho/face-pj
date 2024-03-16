@@ -8,7 +8,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
 import { RouterLink, Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { EloService } from '../../services/elo.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-posts',
@@ -20,7 +20,8 @@ import { HttpClient } from '@angular/common/http';
     MatFormFieldModule,
     NavigationComponent,
     RouterLink,
-    NgIf
+    NgIf,
+    HttpClientModule
   ],
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss']

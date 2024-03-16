@@ -23,7 +23,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     HttpClientModule,
     RouterLink,
-    MatToolbarModule
+    MatToolbarModule,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'

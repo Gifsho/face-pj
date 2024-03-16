@@ -3,13 +3,15 @@ import Chart from 'chart.js/auto';
 import { ImageService } from '../services/image.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-graph',
   standalone: true,
   imports: [
     MatToolbarModule,
-    RouterLink
+    RouterLink,
+    HttpClientModule
   ],
   templateUrl: './graph.component.html',
   styleUrl: './graph.component.scss'
