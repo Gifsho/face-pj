@@ -1,0 +1,30 @@
+<mat-toolbar>
+  <div style="text-align: center;">
+    <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">FACEMASH</span></a>
+  </div>
+  <div class="rigth">
+    <img src="https://shorturl.at/iqyC7" alt="avatar" width="30px"
+      style="border-radius: 50%; border: black; margin-right: 10px;">
+    <a routerLinkActive="active-link" routerLink="/">
+      <span>Logout</span>
+    </a>
+  </div>
+</mat-toolbar>
+
+<div class="container">
+
+  <div class="card p-4" style="margin-bottom: 20px; height: 50px; border-radius: 30px; background-color: #f0f8ff86;">
+    <div style="display: flex; justify-content: space-around;">
+      <a routerLink="/posts"> <span>HOME</span> </a>
+      <a routerLink="/topten"> <span>TOP10</span> </a>
+      <a routerLink="/graph"><span style="color: brown; font-weight: bolder;">STATISTICS/WEEK</span></a>
+      <span style="margin-top: -10px;">SETTING</span>
+    </div>
+  </div>
+
+  <div class=" colorB">
+    <h3>Top 10 Images by Points</h3>
+    <canvas id="myChart" width="1270px" height="690px"></canvas>
+  </div>
+
+</div>

@@ -1,0 +1,37 @@
+<mat-toolbar>
+    <div style="text-align: center;">
+        <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">FACEMASH</span></a> 
+    </div>
+</mat-toolbar>
+
+<div class="container" style="display: flex; justify-content: center; margin-top: 100px;">
+    <div class="card" style="background: #ffffff5b; width: 35%; height: 400px;">
+        <form [formGroup]="loginForm" style="width: 100%; padding: 50px;" (ngSubmit)="login()" novalidate>
+            <h2 style="text-align: center; font-weight: bolder;">LOGIN</h2>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Enter Email" formControlName="email">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="Enter Your_Password" formControlName="password" />
+            </mat-form-field>
+            <div style="display: flex; justify-content: center;">
+                <button color="accent" [disabled]="!loginForm.valid" mat-raised-button type="submit">
+                    <span>Login</span>
+                </button>
+            </div>
+            <mat-divider style="margin-top: 20px;"></mat-divider>
+        </form>
+        
+        <div style="display: flex; justify-content: center; margin-top: -30px;">
+            <button color="accent" mat-raised-button>
+                <a routerLinkActive="active-link" routerLink="/signup">
+                    <span>Signup</span>
+                </a>
+            </button>
+        </div>
+
+    </div>
+</div>

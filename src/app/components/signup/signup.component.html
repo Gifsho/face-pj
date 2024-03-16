@@ -1,0 +1,38 @@
+<mat-toolbar>
+    <div style="text-align: center;">
+        <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">FACEMASH</span></a> 
+    </div>
+    <div class="rigth">
+        <a routerLinkActive="active-link" routerLink="/login">
+            <span>Login</span>
+        </a>
+    </div>
+</mat-toolbar>
+
+<div class="container" style="display: flex; justify-content: center; margin-top: 100px;">
+    <div class="card" style="background: #ffffff5b; width: 35%; height: 450px;">
+        <form [formGroup]="signupForm" style="width: 100%; padding: 50px;" (ngSubmit)="singup()" novalidate>
+            <h2 style="text-align: center; font-weight: bolder; margin-top: -20px;">SingUp</h2>
+            <h3>Choose Avatar image
+            <input type="file" (change)="onFileSelected($event)" accept="image/*" placeholder="Choose Image" formControlName="avatar_img"  style="margin-bottom: 20px;">
+            </h3>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Enter Name" formControlName="name">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Enter Email" formControlName="email">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="Enter Password" formControlName="password" />
+            </mat-form-field>
+            <div style="display: flex; justify-content: center;">
+                <button color="accent" [disabled]="!signupForm.valid" mat-raised-button type="submit">
+                    <span>Sign up</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

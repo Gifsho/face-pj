@@ -1,0 +1,37 @@
+<mat-toolbar>
+    <div style="text-align: center;">
+        <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">FACEMASH</span></a> 
+    </div>
+    <div class="rigth">
+        <img src="https://shorturl.at/iqyC7" alt="avatar" width="30px" style="border-radius: 50%; border: black; margin-right: 10px;">
+        <a routerLinkActive="active-link" routerLink="/">
+            <span>Logout</span>
+        </a>
+    </div>
+</mat-toolbar>
+
+<div class="container">
+    <div class="card p-4" style="margin-bottom: 20px; height: 50px; border-radius: 30px; background-color: #f0f8ff86;">
+        <div style="display: flex; justify-content: space-around;">
+            <a routerLink="/posts"> <span style="color: brown; font-weight: bolder;">HOME</span> </a>
+            <a routerLink="/topten"> <span>TOP10</span> </a>
+            <a routerLink="/graph"><span>STATISTICS/WEEK</span></a>
+            <span style="margin-top: -10px;">SETTING</span> 
+        </div>
+    </div>
+   
+    <div class="row">
+        <div class="col-md-5" (click)="onClickC1()">
+            <img [src]="character1Image.image_url" width="100%" class="img_box">
+        </div>
+
+        <div class="col-md-2" style="display: flex; align-items: center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Street_Fighter_VS_logo.png?20200807133458"
+                width="100%">
+        </div>
+
+        <div class="col-md-5" (click)="onClickC2()">
+            <img [src]="character2Image.image_url" width="100%" class="img_box">
+        </div>
+    </div>
+</div>
