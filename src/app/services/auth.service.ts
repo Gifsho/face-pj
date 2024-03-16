@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private url = "http://localhost:3000/auth";
+  private url = "https://facemashbackend.onrender.com/auth";
 
   isUserLoggedIn$ = new BehaviorSubject<boolean>(false);
   userId: Pick<User, "aid"> | undefined;
