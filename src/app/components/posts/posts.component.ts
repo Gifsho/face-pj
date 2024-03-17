@@ -68,61 +68,59 @@ export class PostsComponent implements OnInit {
     const newRating2 = this.eloService.calculateNewRating(this.character2Image.points, this.character1Image.points, false);
     const id1 = this.character1Image.image_id;
     const id2 = this.character2Image.image_id;
-
+  
     this.character1Image.points = newRating1;
     this.character2Image.points = newRating2;
-
-
+  
     this.imageService.updatePoints(id1, newRating1).subscribe({
       next: (data) => {
-        console.log('Character 1 points updated successfully',data);
+        console.log('Character 1 points updated successfully', data);
       },
       error: (error) => {
         console.error('Failed to update Character 1 points:', error);
       }
     });
-    
+  
     this.imageService.updatePoints(id2, newRating2).subscribe({
       next: (data) => {
-        console.log('Character 2 points updated successfully',data);
+        console.log('Character 2 points updated successfully', data);
       },
       error: (error) => {
         console.error('Failed to update Character 2 points:', error);
       }
     });
-
-    this.randomC2();
+  
+    this.randomizeImages();
   }
-
+  
   onClickC2() {
     const newRating1 = this.eloService.calculateNewRating(this.character1Image.points, this.character2Image.points, false);
     const newRating2 = this.eloService.calculateNewRating(this.character2Image.points, this.character1Image.points, true);
     const id1 = this.character1Image.image_id;
     const id2 = this.character2Image.image_id;
-
+  
     this.character1Image.points = newRating1;
     this.character2Image.points = newRating2;
-
-
+  
     this.imageService.updatePoints(id1, newRating1).subscribe({
       next: (data) => {
-        console.log('Character 1 points updated successfully',data);
+        console.log('Character 1 points updated successfully', data);
       },
       error: (error) => {
         console.error('Failed to update Character 1 points:', error);
       }
     });
-    
+  
     this.imageService.updatePoints(id2, newRating2).subscribe({
       next: (data) => {
-        console.log('Character 2 points updated successfully',data);
+        console.log('Character 2 points updated successfully', data);
       },
       error: (error) => {
         console.error('Failed to update Character 2 points:', error);
       }
     });
-
-    this.randomC1();
+  
+    this.randomizeImages();
   }
 
   randomC2() {
