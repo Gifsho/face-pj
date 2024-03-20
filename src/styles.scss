@@ -22,3 +22,13 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.black-snackbar {
+    background: black !important;
+    color: white !important;
+  }
+  
+.green-snackbar {
+    background: #32CD32 !important;
+    color: white !important;
+  }
