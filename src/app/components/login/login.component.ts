@@ -10,6 +10,9 @@ import { RouterLink } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
+import { SnackbarService } from '../../services/snackbar.service';   
+import { GlobalConstants } from '../../global/global-constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -30,8 +33,11 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  responseMessage: any;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+    private router:Router,
+    private snackbarService:SnackbarService) {
     this.loginForm = this.createFormGroup();
   }
 
@@ -50,7 +56,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
-      .subscribe();
+      .subscribe((response:any)=> {
+        this.responseMessage = response?.message;
+        this.snackbarService.openSnackBar(this.responseMessage,"");
+        this.router.navigate(['/posts']);
+      });
   }
 
 }
