@@ -60,7 +60,16 @@ export class LoginComponent implements OnInit {
         this.responseMessage = response?.message;
         this.snackbarService.openSnackBar(this.responseMessage,"");
         this.router.navigate(['/posts']);
-      });
+      },(error) =>{
+        if(error.error?.message)
+        {
+          this.responseMessage = error.error?.message;
+        }else{
+          this.responseMessage = GlobalConstants.genericError;
+        }
+        this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
+      }
+    );
   }
 
 }
