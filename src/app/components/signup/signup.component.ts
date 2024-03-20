@@ -34,7 +34,7 @@ import { GlobalConstants } from '../../global/global-constants';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
-  responseMessage: any;
+  responseMessage: any = "asdasdasda";
 
   constructor(private authService: AuthService,
               private router:Router,
