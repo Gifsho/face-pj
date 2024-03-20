@@ -10,9 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterLink, Router } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SnackbarService } from '../../services/snackbar.service';   
-import { response } from 'express';
-import { error } from 'console';
-import { GlobalConstants } from '../../global/global-constants';
 
 
 @Component({
@@ -34,7 +31,6 @@ import { GlobalConstants } from '../../global/global-constants';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
-  responseMessage: any;
 
   constructor(private authService: AuthService,
               private router:Router,
@@ -49,8 +45,8 @@ export class SignupComponent implements OnInit {
   createFormGroup(): FormGroup {
     return new FormGroup({
       avatar_img: new FormControl("", [Validators.required, Validators.minLength(2)]),//ต้องมีความยาวอย่างน้อย 2 ตัวอักษร
-      name: new FormControl("", [Validators.required, Validators.pattern(GlobalConstants.nameRegex)]),
-      email: new FormControl("", [Validators.required, Validators.pattern(GlobalConstants.emailRegex)]),//ตรวจสอบค่าที่รับมามีรูปแบบของอีเมล์
+      name: new FormControl("", [Validators.required, Validators.minLength(2)]),
+      email: new FormControl("", [Validators.required, Validators.email]),//ตรวจสอบค่าที่รับมามีรูปแบบของอีเมล์
       password: new FormControl("", [
         Validators.required,
         Validators.minLength(7)]),
@@ -60,20 +56,7 @@ export class SignupComponent implements OnInit {
   singup(): void {
     this.authService
       .signup(this.signupForm.value)
-      .subscribe((response:any)=> {
-        this.responseMessage = response?.message;
-        this.snackbarService.openSnackBar(this.responseMessage,"");
-        this.router.navigate(['/signup']);
-      },(error) =>{
-        if(error.error?.message)
-        {
-          this.responseMessage = error.error?.message;
-        }else{
-          this.responseMessage = GlobalConstants.genericError;
-        }
-        this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
-      }
-    );
+      .subscribe(((msg) => console.log(msg)));
   }
 
 
