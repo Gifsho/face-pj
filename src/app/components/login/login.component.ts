@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe((response:any)=> {
         this.responseMessage = response?.message;
+        console.log(this.responseMessage);
         this.snackbarService.openSnackBar(this.responseMessage,"");
         if (this.responseMessage === "login successfully") {
           this.router.navigate(["posts"]);
