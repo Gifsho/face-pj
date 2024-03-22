@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { EloService } from '../../services/elo.service';
 import { ImageService } from '../../services/image.service';
 import { RouterLink } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavigationComponent } from '../navigation/navigation.component';
+import { error } from 'node:console';
 
 @Component({
   selector: 'app-home',
@@ -21,13 +22,15 @@ import { NavigationComponent } from '../navigation/navigation.component';
     NavigationComponent,
     RouterLink,
     NgIf,
-    HttpClientModule
+    HttpClientModule,
+    NgFor
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit{
   images: any[] = [];
+  account: any[] = [];
   character1Image: any = '';
   character2Image: any = '';
   originalCharacter1Image: any = '';
@@ -49,6 +52,17 @@ export class HomeComponent implements OnInit{
         console.error(error);
       }
     );
+  }
+
+  getAccount() {
+    this.imageService.getAllImages().subscribe(
+      data => {
+        this.account = data;
+      },
+      error => {
+        console.error(error);
+      }
+    )
   }
 
   randomizeImages() {

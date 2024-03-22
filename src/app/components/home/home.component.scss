@@ -46,5 +46,12 @@ img:hover {
 img:not(:hover) {
     // filter: blur(10px);
     filter: brightness(80%);
+}
 
+.change {
+    border-radius: 50%;
+}
+
+.col-md-5 {
+    background: rgba(255, 255, 255, 0.182);
 }
