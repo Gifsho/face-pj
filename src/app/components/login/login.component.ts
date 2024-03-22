@@ -62,8 +62,10 @@ export class LoginComponent implements OnInit {
         this.snackbarService.openSnackBar(this.responseMessage,"");
         if (this.responseMessage === "login successfully") {
           this.router.navigate(["posts"]);
+          this.responseMessage = "";
         } else {
           this.router.navigate(["login"]);
+          this.responseMessage = "";
         }
       },(error) =>{
         if(error.error?.message)
