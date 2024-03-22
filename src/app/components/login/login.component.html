@@ -10,20 +10,12 @@
             <h2 style="text-align: center; font-weight: bolder;">LOGIN</h2>
             <mat-form-field>
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="Enter Email" formControlName="email" required>
-                <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
-                    <span *ngIf="loginForm.controls.email.errors.required">This field is mandatory.</span>
-                    <span *ngIf="loginForm.controls.email.errors.pattern">This field is invalid.</span>
-                  </mat-error>                  
+                <input matInput placeholder="Enter Email" formControlName="email">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Password</mat-label>
-                <input matInput type="password" placeholder="Enter Your_Password" formControlName="password" required/>
-                <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
-                    <span *ngIf="loginForm.controls.password.errors.required">This field is mandatory.</span>
-                    <span *ngIf="loginForm.controls.password.errors.pattern">This field is invalid.</span>
-                  </mat-error>       
+                <input matInput type="password" placeholder="Enter Your_Password" formControlName="password" />
             </mat-form-field>
             <div style="display: flex; justify-content: center;">
                 <button color="accent" [disabled]="!loginForm.valid" mat-raised-button type="submit">
