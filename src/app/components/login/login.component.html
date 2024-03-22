@@ -10,7 +10,11 @@
             <h2 style="text-align: center; font-weight: bolder;">LOGIN</h2>
             <mat-form-field>
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="Enter Email" formControlName="email">
+                <input matInput placeholder="Enter Email" formControlName="email" required>
+                <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+                    <span *ngIf="loginForm.controls.email.errors.required">This field is mandatory.</span>
+                    <span *ngIf="loginForm.controls.email.errors.pattern">This field is invalid.</span>
+                  </mat-error>                  
             </mat-form-field>
 
             <mat-form-field>
