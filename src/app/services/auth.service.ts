@@ -53,7 +53,7 @@ export class AuthService {
           this.userId = tokenObject.userId;
           localStorage.setItem("token", tokenObject.token);
           this.isUserLoggedIn$.next(true);
-          this.router.navigate(["posts"]);
+          // this.router.navigate(["posts"]);
           // this.router.navigate(["posts"], { queryParams: { userId: tokenObject.userId } });
         }),
         catchError(
