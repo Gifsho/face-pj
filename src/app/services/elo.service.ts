@@ -18,13 +18,7 @@ export class EloService {
     const playerScore = playerWin ? 1 : 0;
     const expectedScore = this.calculateProbability(playerRating, opponentRating);
     let newRating = playerRating + this.K_FACTOR * (playerScore - expectedScore);
-    
-    // ตรวจสอบว่า newRating น้อยกว่า 0 หรือไม่
-    if (newRating < 0) {
-        newRating = 0;
-    }
 
     return newRating;
-}
-
+  }
 }
