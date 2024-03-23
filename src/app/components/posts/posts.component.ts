@@ -52,14 +52,6 @@ export class PostsComponent implements OnInit {
     this.getAllImages();
 
     this.getUsedetail();
-
-    this.route.queryParams.subscribe(params => {
-      // Get the value of 'email' parameter from the URL
-      this.userId = params['userId'];
-    });
-
-    
-  
   }
 
   getAllImages() {
@@ -168,6 +160,10 @@ export class PostsComponent implements OnInit {
 
 
   getUsedetail() {
+    this.route.queryParams.subscribe(params => {
+      // Get the value of 'email' parameter from the URL
+      this.userId = params['userId'];
+    });
     this.authService.getUsedetail(this.userId)
       .subscribe((response: any) => {
 
