@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SnackbarService } from '../../services/snackbar.service';
 import { GlobalConstants } from '../../global/global-constants';
 import { Router } from '@angular/router';
-import jwt_decode from 'jwt-decode';
+import jwt_decode, { jwtDecode } from 'jwt-decode';
 
 
 
@@ -65,8 +65,8 @@ export class LoginComponent implements OnInit {
         const token: any = localStorage.getItem("token");
         var decodedToken: any;
         try {
-          // decodedToken = jwt_decode(token);
-          console.log(decodedToken);
+          decodedToken = jwtDecode(token);
+          console.log(decodedToken.email);
         } catch (err) {
           localStorage.clear();
           this.router.navigate(["login"]);
