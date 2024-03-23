@@ -58,6 +58,10 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe((response:any)=> {
+        const token:any = localStorage.getItem("token");
+        console.log(token);
+
+
         this.responseMessage = response?.message;
         this.actype = response?.actype;
         console.log(response?.message);
