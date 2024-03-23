@@ -55,3 +55,7 @@ img:not(:hover) {
 .col-md-5 {
     background: rgba(255, 255, 255, 0.182);
 }
+
+.hoverspan:hover {
+    color: red;
+}
