@@ -15,8 +15,8 @@ export const routes: Routes = [
     { path: "posts", component: PostsComponent },
     { path: "login", component: LoginComponent },
     { path: "signup", component: SignupComponent },
-    { path: "topten", component: ToptenComponent},
-    { path: "graph", component:GraphComponent },
-    { path: "dashboard", component:DashboardComponent },
+    { path: "topten", component: ToptenComponent },
+    { path: "graph", component: GraphComponent },
+    { path: "dashboard", component: DashboardComponent },
     { path: "**", redirectTo: "" },
 ];
