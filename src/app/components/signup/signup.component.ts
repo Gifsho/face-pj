@@ -36,7 +36,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
-  responseMessage: any = "asdasdasda";
+  responseMessage: any;
 
   constructor(private authService: AuthService,
               private router:Router,
