@@ -3,6 +3,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterLink } from '@angular/router';
+
 
 
 @Component({
@@ -12,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
               MatButtonModule,
               MatInputModule,
               MatFormFieldModule,
+              RouterLink
             ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
