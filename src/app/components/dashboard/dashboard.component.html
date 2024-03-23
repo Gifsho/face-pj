@@ -1,17 +1,21 @@
-<div class="cotainer">
+<div class="container">
     <mat-toolbar style="display: flex; justify-content: space-between; margin-top: -100px;">
         <div style="text-align: center;">
-            <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">FACEMASH</span></a>
+            <a routerLink="/"><span style="font-size: 33px; font-weight: bolder; color: #333;">FACEMASH</span></a>
         </div>
-        <div class="rigth">
-            <img src="https://shorturl.at/iqyC7" alt="avatar" width="30px"
-                style="border-radius: 50%; border: black; margin-right: 10px;">
-            <a routerLinkActive="active-link" routerLink="/">
+        <div class="right" style="display: flex; align-items: center;">
+            <img [src]="avatar_img" alt="avatar" width="30px" style="border-radius: 50%; border: 2px solid black; margin-right: 10px;">
+            <div>
+                <p style="margin: 0; font-size: 14px;">Name: {{ name }}</p>
+                <p style="margin: 0; font-size: 14px;">Email: {{ email }}</p>
+            </div>
+            <a routerLinkActive="active-link" routerLink="/" style="text-decoration: none; margin-left: 20px; font-size: 14px; color: #333;">
                 <span>Logout</span>
             </a>
         </div>
     </mat-toolbar>
 </div>
+
 
 <div class="container" style="margin-top: 100px;">
     <div class="card p-4" style="margin-bottom: 20px; height: 50px; border-radius: 30px; background-color: #f0f8ff86;">
