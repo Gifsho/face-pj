@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ToptenComponent } from './components/topten/topten.component';
 import { GraphComponent } from './graph/graph.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 export const routes: Routes = [
@@ -16,5 +17,6 @@ export const routes: Routes = [
     { path: "signup", component: SignupComponent },
     { path: "topten", component: ToptenComponent},
     { path: "graph", component:GraphComponent },
+    { path: "dashboard", component:DashboardComponent },
     { path: "**", redirectTo: "" },
 ];
