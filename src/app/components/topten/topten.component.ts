@@ -19,6 +19,9 @@ export class ToptenComponent implements OnInit {
   images: any[] = [];
   topTenImages: any[] = [];
   previousTopTenImages: any[] = []; // เพิ่มตัวแปรเก็บข้อมูล Top 10 ของวันก่อนหน้า
+  avatar_img: any;
+  name: any;
+  email: any;
 
   constructor(private imageService: ImageService) { }
 
@@ -28,6 +31,11 @@ export class ToptenComponent implements OnInit {
     } catch (error) {
       console.error(error);
     }
+
+    //getlocalStorage
+    this.avatar_img = localStorage.getItem('avatar_img');
+    this.name = localStorage.getItem('name');
+    this.email = localStorage.getItem('email');
   }
 
   async getTopTenImages(): Promise<any[]> {

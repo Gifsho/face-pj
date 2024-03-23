@@ -8,7 +8,9 @@ import { NavigationComponent } from '../navigation/navigation.component';
 import { RouterLink, Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { EloService } from '../../services/elo.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -32,11 +34,25 @@ export class PostsComponent implements OnInit {
   character2Image: any = '';
   originalCharacter1Image: any = '';
   originalCharacter2Image: any = '';
+  userId: any;
+  avatar_img: any;
+  name: any;
+  email: any;
 
-  constructor(private imageService: ImageService, private eloService: EloService, private httpClient: HttpClient) { }
+  constructor(private imageService: ImageService,
+    private eloService: EloService,
+    private authService: AuthService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllImages();
+
+    this.getUsedetail();
+
+    //getlocalStorage
+    this.avatar_img = localStorage.getItem('avatar_img');
+    this.name = localStorage.getItem('name');
+    this.email = localStorage.getItem('email');
   }
 
   getAllImages() {
@@ -142,4 +158,34 @@ export class PostsComponent implements OnInit {
 
     this.randomizeImages();
   }
+
+
+  getUsedetail() {
+    this.route.queryParams.subscribe(params => {
+      // Get the value of 'email' parameter from the URL
+      this.userId = params['userId'];
+    });
+    this.authService.getUsedetail(this.userId)
+      .subscribe((response: any) => {
+
+        this.avatar_img = response?.avatar_img;
+        this.name = response?.name;
+        this.email = response?.email;
+
+        // Set values in localStorage
+        localStorage.setItem('avatar_img', this.avatar_img);
+        localStorage.setItem('name', this.name);
+        localStorage.setItem('email', this.email);
+
+        console.log(response?.avatar_img);
+        console.log(response?.name);
+        console.log(response?.email);
+
+      }, (error) => {
+        console.error("Error occurred while fetching user details:", error);
+      }
+      );
+  }
+
 }
+

@@ -19,18 +19,26 @@ import { HttpClientModule } from '@angular/common/http';
 export class GraphComponent implements OnInit {
   topTenImages: any[] = [];
   previousTopTenImages: any[] = [];
+  avatar_img: any;
+  name: any;
+  email: any;
 
   constructor(private imageService: ImageService) { }
 
   ngOnInit(): void {
     this.getGraph();
+
+    //getlocalStorage
+    this.avatar_img = localStorage.getItem('avatar_img');
+    this.name = localStorage.getItem('name');
+    this.email = localStorage.getItem('email');
   }
 
   getGraph(): void {
     this.imageService.getAllImages().subscribe(
       (data: any[]) => {
         const sortedData = data[0].slice().sort((a: any, b: any) => b.points - a.points);
-        this.previousTopTenImages = this.topTenImages; 
+        this.previousTopTenImages = this.topTenImages;
         this.topTenImages = sortedData.slice(0, 10);
         this.createChart();
       },
@@ -44,7 +52,7 @@ export class GraphComponent implements OnInit {
     const labels = this.topTenImages.map(image => {
       return image.name.toString() + "(image_id: " + image.image_id.toString() + ")";
     });
-  
+
     const data = this.topTenImages.map(image => image.points);
 
     const canvas: HTMLCanvasElement = document.getElementById('myChart') as HTMLCanvasElement;

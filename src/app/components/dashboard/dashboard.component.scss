@@ -1,8 +1,41 @@
 mat-toolbar {
     background: #0f0d46; 
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     height: 70px;
     position: fixed;
     z-index: 1;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.mat-mdc-text-field-wrapper {
+    width: 100%;
+    font-size: 12px;
+}
+
+.tb {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+.tb {
+    display: flex;
+    align-items: center;
+}
+
+.shorter {
+    flex: 1;
+    max-width: 150px; 
+    margin-right: 10px; 
+    max-height: 55px;
+}
+
+a:hover {
+    font-weight: bolder;
+    text-shadow: 0 0 30px rgb(0, 255, 34);
 }
 

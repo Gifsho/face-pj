@@ -10,9 +10,13 @@ import { RouterLink } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
-import { SnackbarService } from '../../services/snackbar.service';   
+import { SnackbarService } from '../../services/snackbar.service';
 import { GlobalConstants } from '../../global/global-constants';
 import { Router } from '@angular/router';
+import jwt_decode, { jwtDecode } from 'jwt-decode';
+
+
+
 
 @Component({
   selector: 'app-login',
@@ -37,8 +41,8 @@ export class LoginComponent implements OnInit {
   actype: any;
 
   constructor(private authService: AuthService,
-    private router:Router,
-    private snackbarService:SnackbarService) {
+    private router: Router,
+    private snackbarService: SnackbarService) {
     this.loginForm = this.createFormGroup();
   }
 
@@ -57,35 +61,43 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
-      .subscribe((response:any)=> {
-        const token:any = localStorage.getItem("token");
-        console.log(token);
+      .subscribe((response: any) => {
+        const token: any = localStorage.getItem("token");
+        var decodedToken: any;
+        try {
+          decodedToken = jwtDecode(token);
+          console.log(decodedToken.userId);
+        } catch (err) {
+          localStorage.clear();
+          this.router.navigate(["login"]);
+        }
 
 
         this.responseMessage = response?.message;
         this.actype = response?.actype;
         console.log(response?.message);
         console.log(response?.actype);
-        this.snackbarService.openSnackBar(this.responseMessage,"");
+        this.snackbarService.openSnackBar(this.responseMessage, "");
         if (this.responseMessage === "login successfully") {
-          if(this.actype == "user"){
-            this.router.navigate(["posts"]);
-          }else{
-            this.router.navigate(["dashboard"]);
+          if (this.actype == "user") {
+            this.router.navigate(["posts"], { queryParams: { userId: decodedToken.userId } });
+          } else if (this.actype == "admin") {
+            this.router.navigate(["dashboard"], { queryParams: { userId: decodedToken.userId } });
           }
         } else {
           this.router.navigate(["login"]);
         }
-      },(error) =>{
-        if(error.error?.message)
-        {
+      }, (error) => {
+        if (error.error?.message) {
           this.responseMessage = error.error?.message;
-        }else{
+        } else {
           this.responseMessage = GlobalConstants.genericError;
         }
-        this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
+        this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error);
       }
-    );
+      );
   }
 
 }
+
+

@@ -4,9 +4,11 @@
             <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">FACEMASH</span></a>
         </div>
         <div class="rigth">
-            <img src="https://shorturl.at/iqyC7" alt="avatar" width="30px"
+            <img [src]="avatar_img" alt="avatar" width="30px"
                 style="border-radius: 50%; border: black; margin-right: 10px;">
             <a routerLinkActive="active-link" routerLink="/">
+                <p>Name: {{ name }}</p>
+                <p>Email: {{ email }}</p>
                 <span>Logout</span>
             </a>
         </div>
