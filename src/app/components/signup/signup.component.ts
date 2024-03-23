@@ -13,6 +13,7 @@ import { SnackbarService } from '../../services/snackbar.service';
 import { response } from 'express';
 import { error } from 'console';
 import { GlobalConstants } from '../../global/global-constants';
+import { NavigationComponent } from '../navigation/navigation.component';
 
 
 @Component({
@@ -28,6 +29,7 @@ import { GlobalConstants } from '../../global/global-constants';
     HttpClientModule,
     RouterLink,
     MatToolbarModule,
+    NavigationComponent,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
