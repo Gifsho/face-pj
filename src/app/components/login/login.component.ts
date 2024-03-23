@@ -64,7 +64,11 @@ export class LoginComponent implements OnInit {
         console.log(response?.actype);
         this.snackbarService.openSnackBar(this.responseMessage,"");
         if (this.responseMessage === "login successfully") {
-          this.router.navigate(["posts"]);
+          if(this.actype == "user"){
+            this.router.navigate(["posts"]);
+          }else{
+            this.router.navigate(["dashboard"]);
+          }
         } else {
           this.router.navigate(["login"]);
         }
