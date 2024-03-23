@@ -11,12 +11,12 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [  MatToolbarModule,
-              MatButtonModule,
-              MatInputModule,
-              MatFormFieldModule,
-              RouterLink
-            ],
+  imports: [MatToolbarModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    RouterLink
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -28,11 +28,16 @@ export class DashboardComponent implements OnInit {
   email: any;
 
   constructor(private authService: AuthService,
-              private route: ActivatedRoute) {}
+    private route: ActivatedRoute) { }
 
-  
+
   ngOnInit(): void {
     this.getUsedetail();
+
+    //getlocalStorage
+    this.avatar_img = localStorage.getItem('avatar_img');
+    this.name = localStorage.getItem('name');
+    this.email = localStorage.getItem('email');
   }
 
   getUsedetail() {
@@ -46,6 +51,12 @@ export class DashboardComponent implements OnInit {
         this.avatar_img = response?.avatar_img;
         this.name = response?.name;
         this.email = response?.email;
+
+        // Set values in localStorage
+        localStorage.setItem('avatar_img', this.avatar_img);
+        localStorage.setItem('name', this.name);
+        localStorage.setItem('email', this.email);
+
         console.log(response?.avatar_img);
         console.log(response?.name);
         console.log(response?.email);
