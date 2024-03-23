@@ -80,9 +80,9 @@ export class LoginComponent implements OnInit {
         this.snackbarService.openSnackBar(this.responseMessage, "");
         if (this.responseMessage === "login successfully") {
           if (this.actype == "user") {
-            this.router.navigate(["posts"], { queryParams: { email: decodedToken.userId } });
+            this.router.navigate(["posts"], { queryParams: { userId: decodedToken.userId } });
           } else {
-            this.router.navigate(["dashboard"], { queryParams: { email: decodedToken.userId } });
+            this.router.navigate(["dashboard"], { queryParams: { userId: decodedToken.userId } });
           }
         } else {
           this.router.navigate(["login"]);
