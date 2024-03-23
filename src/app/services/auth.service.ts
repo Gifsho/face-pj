@@ -69,8 +69,8 @@ export class AuthService {
     return this.http.get<any[]>(this.url);
   }
 
-  getUsedetail(email: string): Observable<any> {
-    const url = `${this.url}/getUsedetail`;
-    return this.http.get<any[]>(this.url);
+  getUsedetail(userId: any): Observable<any> {
+    const geturl = `${this.url}/getUsedetail`;
+    return this.http.get<any[]>(geturl);
   }
 }
