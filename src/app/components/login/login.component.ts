@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
         var decodedToken: any;
         try {
           decodedToken = jwtDecode(token);
-          console.log(decodedToken.email);
+          console.log(decodedToken.userId);
         } catch (err) {
           localStorage.clear();
           this.router.navigate(["login"]);
@@ -80,9 +80,9 @@ export class LoginComponent implements OnInit {
         this.snackbarService.openSnackBar(this.responseMessage, "");
         if (this.responseMessage === "login successfully") {
           if (this.actype == "user") {
-            this.router.navigate(["posts"]);
+            this.router.navigate(["posts"], { queryParams: { email: decodedToken.userId } });
           } else {
-            this.router.navigate(["dashboard"]);
+            this.router.navigate(["dashboard"], { queryParams: { email: decodedToken.userId } });
           }
         } else {
           this.router.navigate(["login"]);
