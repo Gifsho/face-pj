@@ -21,26 +21,24 @@
             <a routerLink="/posts"> <span style="color: brown; font-weight: bolder;">HOME</span> </a>
             <a routerLink="/topten"> <span>TOP10</span> </a>
             <a routerLink="/graph"><span>STATISTICS/WEEK</span></a>
-            <span style="margin-top: -10px;">SETTING</span>
+            <span style="margin-top: -10px;">SETTING</span> 
         </div>
     </div>
-
+   
     <div class="row p-5">
         <div class="col-md-5" (click)="onClickC1()">
-            <img [src]="character1Image.avatar_img" width="10%" height="8%" class="img_box change mt-3 mb-3"
-                style="display: inline-block;">
+            <img [src]="character1Image.avatar_img" width="10%" height="8%" class="img_box change mt-3 mb-3" style="display: inline-block;">
             <h2 style="color: white; padding: 10px; display: inline-block;">{{ character1Image.name }}</h2>
             <img [src]="character1Image.image_url" width="100%" class="img_box mb-2">
         </div>
-
+        
         <div class="col-md-2" style="display: flex; align-items: center;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Street_Fighter_VS_logo.png?20200807133458"
                 width="100%">
         </div>
 
         <div class="col-md-5" (click)="onClickC2()">
-            <img [src]="character1Image.avatar_img" width="10%" height="8%" class="img_box change mt-3 mb-3"
-                style="display: inline-block;">
+            <img [src]="character1Image.avatar_img" width="10%" height="8%" class="img_box change mt-3 mb-3" style="display: inline-block;">
             <h2 style="color: white; padding: 10px; display: inline-block;">{{ character2Image.name }}</h2>
             <img [src]="character2Image.image_url" width="100%" class="img_box mb-2">
         </div>
