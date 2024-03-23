@@ -20,6 +20,12 @@ import { RouterLink } from '@angular/router';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
+
+  userId: any;
+  avatar_img: any;
+  name: any;
+  email: any;
+
   
   ngOnInit(): void {
   }

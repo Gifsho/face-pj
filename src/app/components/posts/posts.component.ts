@@ -8,9 +8,8 @@ import { NavigationComponent } from '../navigation/navigation.component';
 import { RouterLink, Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { EloService } from '../../services/elo.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
-import { SnackbarService } from '../../services/snackbar.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -42,10 +41,7 @@ export class PostsComponent implements OnInit {
 
   constructor(private imageService: ImageService, 
               private eloService: EloService, 
-              private httpClient: HttpClient,
               private authService: AuthService,
-              private router: Router,
-              private snackbarService: SnackbarService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -175,12 +171,7 @@ export class PostsComponent implements OnInit {
         console.log(response?.email);
 
       }, (error) => {
-        // if (error.error?.message) {
-        //   this.responseMessage = error.error?.message;
-        // } else {
-        //   this.responseMessage = GlobalConstants.genericError;
-        // }
-        // this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+        console.error("Error occurred while fetching user details:", error);
       }
       );
   }

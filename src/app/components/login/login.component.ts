@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
         if (this.responseMessage === "login successfully") {
           if (this.actype == "user") {
             this.router.navigate(["posts"], { queryParams: { userId: decodedToken.userId } });
-          } else {
+          } else if (this.actype == "admin") {
             this.router.navigate(["dashboard"], { queryParams: { userId: decodedToken.userId } });
           }
         } else {
