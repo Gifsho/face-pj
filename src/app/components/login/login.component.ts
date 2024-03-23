@@ -34,6 +34,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   responseMessage: any;
+  actype: any;
 
   constructor(private authService: AuthService,
     private router:Router,
@@ -58,7 +59,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe((response:any)=> {
         this.responseMessage = response?.message;
+        this.actype = response?.actype;
         console.log(response?.message);
+        console.log(response?.actype);
         this.snackbarService.openSnackBar(this.responseMessage,"");
         if (this.responseMessage === "login successfully") {
           this.router.navigate(["posts"]);
