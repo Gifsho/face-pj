@@ -66,7 +66,6 @@ export class LoginComponent implements OnInit {
         var decodedToken: any;
         try {
           // decodedToken = jwt_decode(token);
-          // decodedToken = jwt_decode(token); 
           console.log(decodedToken);
         } catch (err) {
           localStorage.clear();

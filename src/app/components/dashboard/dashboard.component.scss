@@ -1,6 +1,6 @@
 mat-toolbar {
     background: #0f0d46; 
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     height: 70px;
     position: fixed;
     z-index: 1;
@@ -39,19 +39,3 @@ a:hover {
     text-shadow: 0 0 30px rgb(0, 255, 34);
 }
 
-img:hover {
-    filter: brightness(100%);
-}
-
-img:not(:hover) {
-    // filter: blur(10px);
-    filter: brightness(80%);
-}
-
-.change {
-    border-radius: 50%;
-}
-
-.col-md-5 {
-    background: rgba(255, 255, 255, 0.182);
-}
