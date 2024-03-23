@@ -39,15 +39,20 @@ export class PostsComponent implements OnInit {
   name: any;
   email: any;
 
-  constructor(private imageService: ImageService, 
-              private eloService: EloService, 
-              private authService: AuthService,
-              private route: ActivatedRoute) { }
+  constructor(private imageService: ImageService,
+    private eloService: EloService,
+    private authService: AuthService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllImages();
 
     this.getUsedetail();
+
+    //getlocalStorage
+    this.avatar_img = localStorage.getItem('avatar_img');
+    this.name = localStorage.getItem('name');
+    this.email = localStorage.getItem('email');
   }
 
   getAllImages() {
@@ -166,6 +171,12 @@ export class PostsComponent implements OnInit {
         this.avatar_img = response?.avatar_img;
         this.name = response?.name;
         this.email = response?.email;
+
+        // Set values in localStorage
+        localStorage.setItem('avatar_img', this.avatar_img);
+        localStorage.setItem('name', this.name);
+        localStorage.setItem('email', this.email);
+
         console.log(response?.avatar_img);
         console.log(response?.name);
         console.log(response?.email);
@@ -177,4 +188,4 @@ export class PostsComponent implements OnInit {
   }
 
 }
-  
+
