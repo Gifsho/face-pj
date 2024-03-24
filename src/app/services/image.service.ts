@@ -29,6 +29,11 @@ export class ImageService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
+  getOnly(aid: number): Observable<any> {
+    const url = `${this.apiUrl}/find/${aid}`;
+    return this.http.get(url);
+  }
+
   // fetchTopTenUser7day(): Observable<any[]> {
   //   const url = `${this.apiUrl}/topTenUser7day`;
   //   return this.http.get<any[]>(url);

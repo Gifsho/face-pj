@@ -1,0 +1,38 @@
+<div class="cotainer">
+    <mat-toolbar style="display: flex; justify-content: space-between; margin-top: -100px;">
+        <div style="text-align: center;">
+            <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">FACEMASH</span></a>
+        </div>
+        <div>
+            <img [src]="avatar_img" width="55px" height="50px"
+                style="border-radius: 50%; border: black; margin-right: 10px;">
+            <span style="color:white; margin: 10px;">{{ name }}</span>
+            <a routerLinkActive="active-link" routerLink="/">
+                <span class="hoverspan">| Logout</span>
+            </a>
+        </div>
+    </mat-toolbar>
+</div>
+
+<div class="container" style="margin-top: 100px;">
+    <div class="card p-4" style="margin-bottom: 20px; height: 50px; border-radius: 30px; background-color: #f0f8ff86;">
+        <div style="display: flex; justify-content: space-around;">
+            <a routerLink="/posts"> <span>HOME</span> </a>
+            <a routerLink="/topten"> <span>TOP10</span> </a>
+            <a routerLink="/graph"><span>STATISTICS/WEEK</span></a>
+            <a routerLink="/main"><span span style="color: brown; font-weight: bolder;">SETTING</span></a>
+        </div>
+    </div>
+
+    <div style="display: flex; align-items: center; margin-top: 50px; justify-content: center;">
+        <img [src]="avatar_img" class="img_box" height="400px">
+        <div class="card p-3" style="height: 400px; width: 500px;">
+            <h2>User : {{ name }}</h2>
+            <h2>Email : {{ email }}</h2>
+            <h2>UploadImage : </h2>
+            <h2>Password : </h2>
+            <h2>VerifyPassword : </h2>
+            <button mat-raised-button type="submit">Submit</button>
+        </div>
+    </div>
+</div>

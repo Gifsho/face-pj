@@ -22,6 +22,7 @@ export class GraphComponent implements OnInit {
   avatar_img: any;
   name: any;
   email: any;
+  userId: any;
 
   constructor(private imageService: ImageService) { }
 
@@ -29,6 +30,7 @@ export class GraphComponent implements OnInit {
     this.getGraph();
 
     //getlocalStorage
+    this.userId = localStorage.getItem('userId');
     this.avatar_img = localStorage.getItem('avatar_img');
     this.name = localStorage.getItem('name');
     this.email = localStorage.getItem('email');

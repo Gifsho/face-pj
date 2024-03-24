@@ -8,6 +8,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ToptenComponent } from './components/topten/topten.component';
 import { GraphComponent } from './graph/graph.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MainComponent } from './setting/main/main.component';
+import { AddimagesComponent } from './setting/addimages/addimages.component';
 
 
 export const routes: Routes = [
@@ -18,5 +20,7 @@ export const routes: Routes = [
     { path: "topten", component: ToptenComponent },
     { path: "graph", component: GraphComponent },
     { path: "dashboard", component: DashboardComponent },
+    { path: "main/:id", component: MainComponent},
+    { path: "add-img", component: AddimagesComponent},
     { path: "**", redirectTo: "" },
 ];

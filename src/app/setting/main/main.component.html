@@ -1,0 +1,65 @@
+<div class="cotainer">
+    <mat-toolbar style="display: flex; justify-content: space-between; margin-top: -100px;">
+        <div style="text-align: center;">
+            <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">FACEMASH</span></a>
+        </div>
+        <div>
+            <img [src]="avatar_img" width="55px" height="50px"
+                style="border-radius: 50%; border: black; margin-right: 10px;">
+            <span style="color:white; margin: 10px;">{{ name }}</span>
+            <a routerLinkActive="active-link" routerLink="/">
+                <span class="hoverspan">| Logout</span>
+            </a>
+        </div>
+    </mat-toolbar>
+</div>
+
+<div class="container" style="margin-top: 100px;">
+    <div class="card p-4" style="margin-bottom: 20px; height: 50px; border-radius: 30px; background-color: #f0f8ff86;">
+        <div style="display: flex; justify-content: space-around;">
+            <a routerLink="/posts"> <span>HOME</span> </a>
+            <a routerLink="/topten"> <span>TOP10</span> </a>
+            <a routerLink="/graph"><span>STATISTICS/WEEK</span></a>
+            <a routerLink="/main"><span span style="color: brown; font-weight: bolder;">SETTING</span></a>
+        </div>
+    </div>
+
+    <div class="row p-5">
+        <div class="col-lg-9">
+            <div class="card" style="height: auto; background: #ffffff15;">
+                <div class="row p-3">
+                    <ng-container *ngFor="let image of images; let i = index">
+                        <div class="col-md-3 mb-2">
+                            <img [src]="image.image_url" height="250px" width="200px" class="img_box">
+                        </div>
+                        <!-- เมื่อแสดงครบรูปแล้ว ให้แสดงรูปภาพเพิ่มเติม -->
+                        <ng-container *ngIf="i === images.length - 1 && images && images.length < 5">
+                            <div class="col-md-3 mb-2">
+                                <a routerLink="/add-img">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/1200px-Plus_symbol.svg.png"
+                                        height="250px" width="200px" class="img_box" style="background: #66339955;">
+                                </a>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                    
+                    <!-- เมื่อไม่มีข้อมูลรูปภาพ -->
+                    <ng-container *ngIf="!images || images.length === 0">
+                        <div class="col-md-3 mb-2">
+                            <a routerLink="/add-img">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/1200px-Plus_symbol.svg.png"
+                                    height="250px" width="200px" class="img_box" style="background: #66339955;">
+                            </a>
+                        </div>
+                    </ng-container>
+                    
+                    
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-3">
+            <div class="card bg-success" style="height: 400px;"></div>
+        </div>
+    </div>
+</div>
