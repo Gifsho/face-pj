@@ -56,7 +56,7 @@ export class AddimagesComponent {
       this.name = localStorage.getItem('name');
       this.email = localStorage.getItem('email');
       console.log(this.name);
-      console.log(this.userId);
+      console.log(this.aid);
     }
   }
 
@@ -82,4 +82,13 @@ export class AddimagesComponent {
       }
     );
   }
+
+  // onFileSelected(event: any){
+  //   const file: File = event.target.files[0];
+  //   if (file) {
+  //     this.signupForm.patchValue({
+  //       avatar_img: file.name // เซ็ตค่าชื่อไฟล์ให้กับฟิลด์ avatar_img
+  //     });
+  //   }
+  // }
 }

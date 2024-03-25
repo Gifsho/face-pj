@@ -22,7 +22,7 @@ export class ToptenComponent implements OnInit {
   avatar_img: any;
   name: any;
   email: any;
-  userId: any;
+  aid: any;
 
   constructor(private imageService: ImageService) { }
 
@@ -34,7 +34,7 @@ export class ToptenComponent implements OnInit {
     }
 
     //getlocalStorage
-    this.userId = localStorage.getItem('userId')
+    this.aid = localStorage.getItem('aid')
     this.avatar_img = localStorage.getItem('avatar_img');
     this.name = localStorage.getItem('name');
     this.email = localStorage.getItem('email');

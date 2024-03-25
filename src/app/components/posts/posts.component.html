@@ -3,42 +3,66 @@
         <div style="text-align: center;">
             <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">FACEMASH</span></a>
         </div>
-        <div>
-            <img [src]="avatar_img" width="55px" height="50px" style="border-radius: 50%; border: black; margin-right: 10px;">
-            <span style="color:white; margin: 10px;">{{ name }}</span>
-            <a routerLinkActive="active-link" routerLink="/">  
-                <span class="hoverspan">| Logout</span>
-            </a>
+        <div style="display: flex;">
+            <img [src]="avatar_img" width="55px" height="50px"
+                style="border-radius: 50%; border: black; margin-right: 10px;">
+            <span style="color:white; margin: 10px;">{{ aid }}:{{ name }}</span>
+            <button routerLinkActive="active-link" routerLink="/" class="Btn">
+                <div class="sign"><svg viewBox="0 0 512 512">
+                        <path
+                            d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+                        </path>
+                    </svg></div>
+                <div class="text">Logout</div>
+            </button>
         </div>
     </mat-toolbar>
 </div>
 
 <div class="container" style="margin-top: 100px;">
-    <div class="card p-4" style="margin-bottom: 20px; height: 50px; border-radius: 30px; background-color: #f0f8ff86;">
-        <div style="display: flex; justify-content: space-around;">
-            <a routerLink="/posts"> <span style="color: brown; font-weight: bolder;">HOME</span> </a>
-            <a routerLink="/topten"> <span>TOP10</span> </a>
-            <a routerLink="/graph"><span>STATISTICS/WEEK</span></a>
-            <a [routerLink]="['/main', userId]"><span style="margin-top: -10px;">SETTING</span> </a>
+    <button class="btn" type="button" style="width: 100%">
+        <strong>
+            <div style="display: flex; justify-content: space-around; font-size: 20px;">
+                <a routerLink="/posts" style="padding: 0 60px;"> <span style="color: brown; font-weight: bolder;">HOME</span> </a>
+                <a routerLink="/topten" style="padding: 0 60px;"> <span>TOP10</span> </a>
+                <a routerLink="/graph" style="padding: 0 60px;"><span>STATISTICS/WEEK</span></a>
+                <a [routerLink]="['/main', aid]" style="padding: 0 60px;"><span style="margin-top: -10px;">SETTING</span> </a>
+            </div>
+        </strong>
+        <div id="container-stars">
+            <div id="stars"></div>
         </div>
-    </div>
-   
+
+        <div id="glow">
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+    </button>
+
+
     <div class="row p-5">
-        <div class="col-md-5" (click)="onClickC1()">
-            <img [src]="character1Image.avatar_img" width="10%" height="8%" class="img_box change mt-3 mb-3" style="display: inline-block;">
-            <h2 style="color: white; padding: 10px; display: inline-block;">{{ character1Image.name }}</h2>
-            <img [src]="character1Image.image_url" width="100%" class="img_box mb-2">
+        <div class="col-md-5 hovercard">
+            <img [src]="character1Image.image_url" width="476px" height="476px" class="img_box">
+            <div style="display: flex; align-items: center;">
+                <img [src]="character1Image.avatar_img" width="50px" height="45px" class="img_box change" alt="">
+                <p class="p-2" style="margin-top:15px">{{ character1Image.name }}</p>
+            </div>
         </div>
-        
+
         <div class="col-md-2" style="display: flex; align-items: center;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Street_Fighter_VS_logo.png?20200807133458"
                 width="100%">
         </div>
 
-        <div class="col-md-5" (click)="onClickC2()">
-            <img [src]="character1Image.avatar_img" width="10%" height="8%" class="img_box change mt-3 mb-3" style="display: inline-block;">
-            <h2 style="color: white; padding: 10px; display: inline-block;">{{ character2Image.name }}</h2>
-            <img [src]="character2Image.image_url" width="100%" class="img_box mb-2">
+        <div class="col-md-5 hovercard">
+            <img [src]="character2Image.image_url" width="476px" height="476px" class="img_box">
+            <div style="display: flex; align-items: center;">
+                <img [src]="character2Image.avatar_img" width="50px" height="45px" class="img_box change" alt="">
+                <p class="p-2" style="margin-top:15px">{{ character2Image.name }}</p>
+            </div>
         </div>
     </div>
+
+
+
 </div>

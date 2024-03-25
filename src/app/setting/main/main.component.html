@@ -3,26 +3,41 @@
         <div style="text-align: center;">
             <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">FACEMASH</span></a>
         </div>
-        <div>
+        <div style="display: flex;">
             <img [src]="avatar_img" width="55px" height="50px"
                 style="border-radius: 50%; border: black; margin-right: 10px;">
-            <span style="color:white; margin: 10px;">{{ name }}</span>
-            <a routerLinkActive="active-link" routerLink="/">
-                <span class="hoverspan">| Logout</span>
-            </a>
+            <span style="color:white; margin: 10px;">{{ aid }}:{{ name }}</span>
+            <button routerLinkActive="active-link" routerLink="/" class="Btn">
+                <div class="sign"><svg viewBox="0 0 512 512">
+                        <path
+                            d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+                        </path>
+                    </svg></div>
+                <div class="text">Logout</div>
+            </button>
         </div>
     </mat-toolbar>
 </div>
 
 <div class="container" style="margin-top: 100px;">
-    <div class="card p-4" style="margin-bottom: 20px; height: 50px; border-radius: 30px; background-color: #f0f8ff86;">
-        <div style="display: flex; justify-content: space-around;">
-            <a routerLink="/posts"> <span>HOME</span> </a>
-            <a routerLink="/topten"> <span>TOP10</span> </a>
-            <a routerLink="/graph"><span>STATISTICS/WEEK</span></a>
-            <a routerLink="/main"><span span style="color: brown; font-weight: bolder;">SETTING</span></a>
+    <button class="btn" type="button" style="width: 100%">
+        <strong>
+            <div style="display: flex; justify-content: space-around; font-size: 20px;">
+                <a routerLink="/posts" style="padding: 0 60px;"> <span>HOME</span> </a>
+                <a routerLink="/topten" style="padding: 0 60px;"> <span>TOP10</span> </a>
+                <a routerLink="/graph" style="padding: 0 60px;"><span>STATISTICS/WEEK</span></a>
+                <a [routerLink]="['/main', aid]" style="padding: 0 60px;"><span style="color: brown; font-weight: bolder;">SETTING</span> </a>
+            </div>
+        </strong>
+        <div id="container-stars">
+            <div id="stars"></div>
         </div>
-    </div>
+
+        <div id="glow">
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+    </button>
 
     <div class="row p-5">
         <div class="col-lg-9">
@@ -30,36 +45,56 @@
                 <div class="row p-3">
                     <ng-container *ngFor="let image of images; let i = index">
                         <div class="col-md-3 mb-2">
-                            <img [src]="image.image_url" height="250px" width="200px" class="img_box">
+                            <img [src]="image.image_url" height="250px" width="200px" class="img_box" style="border-radius: 10px;">
                         </div>
                         <!-- เมื่อแสดงครบรูปแล้ว ให้แสดงรูปภาพเพิ่มเติม -->
                         <ng-container *ngIf="i === images.length - 1 && images && images.length < 5">
                             <div class="col-md-3 mb-2">
-                                <a routerLink="/add-img">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/1200px-Plus_symbol.svg.png"
-                                        height="250px" width="200px" class="img_box" style="background: #66339955;">
-                                </a>
+                                <div class="cardadd">
+                                    <h2>
+                                        <a [routerLink]="['/add-img', aid]">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/1200px-Plus_symbol.svg.png"
+                                                height="250px" width="200px" class="img_box"
+                                                style="background: #66339955;">
+                                        </a>
+                                    </h2>
+                                </div>
                             </div>
                         </ng-container>
                     </ng-container>
-                    
+
                     <!-- เมื่อไม่มีข้อมูลรูปภาพ -->
                     <ng-container *ngIf="!images || images.length === 0">
                         <div class="col-md-3 mb-2">
-                            <a routerLink="/add-img">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/1200px-Plus_symbol.svg.png"
-                                    height="250px" width="200px" class="img_box" style="background: #66339955;">
-                            </a>
+                            <div class="cardadd">
+                                <h2>
+                                    <a [routerLink]="['/add-img', aid]">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/1200px-Plus_symbol.svg.png"
+                                            height="250px" width="200px" class="img_box"
+                                            style="background: #66339955;">
+                                    </a>
+                                </h2>
+                            </div>
                         </div>
                     </ng-container>
-                    
-                    
+
+
                 </div>
             </div>
 
         </div>
-        <div class="col-lg-3">
-            <div class="card bg-success" style="height: 400px;"></div>
+
+        <div class="col-md-3">
+            <div class="cardhover" style="height: 549.6px; width: 300px;">
+                <div class="card2" style="height: 549.6px; width: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <img src="{{ avatar_img }}" height="200px" width="200px" style="margin-top: -80px; border-radius: 10px;">
+                    <h2 class="textW">Profile at {{ name }}</h2>
+                    <p class="textW">email : {{ email }}</p>
+                    <p class="textW">name : {{ name }}</p>
+                    <p class="textW">change password</p>
+                </div>
+            </div>
         </div>
+        
     </div>
 </div>
