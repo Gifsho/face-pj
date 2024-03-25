@@ -44,7 +44,6 @@ export class MainComponent {
       this.userId = params['userId'];
       if (this.userId) {
         this.getUsedetail();
-        console.log(this.userId);
       }
     });
 
