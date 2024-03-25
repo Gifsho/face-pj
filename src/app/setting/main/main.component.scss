@@ -162,7 +162,6 @@ img:not(:hover) {
 .cardhover:hover {
     box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
 }
-
 .cardadd {
     width: 200px;
     height: 250px;
@@ -173,15 +172,15 @@ img:not(:hover) {
     place-items: center;
     overflow: hidden;
     border-radius: 20px;
-  }
-  
-  .cardadd h2 {
+}
+
+.cardadd h2 {
     z-index: 1;
     color: white;
     font-size: 2em;
-  }
-  
-  .cardadd::before {
+}
+
+.cardadd::before {
     content: '';
     position: absolute;
     width: 100px;
@@ -189,31 +188,31 @@ img:not(:hover) {
     height: 130%;
     animation: rotBGimg 3s linear infinite;
     transition: all 0.2s linear;
-  }
-  
-  @keyframes rotBGimg {
+}
+
+@keyframes rotBGimg {
     from {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
-  
+
     to {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  
-  .cardadd::after {
+}
+
+.cardadd::after {
     content: '';
     position: absolute;
     background: #07182E;
     ;
     inset: 5px;
     border-radius: 15px;
-  }  
-  /* .card:hover:before {
+}
+
+/* .card:hover:before {
     background-image: linear-gradient(180deg, rgb(81, 255, 0), purple);
     animation: rotBGimg 3.5s linear infinite;
   } */
-  
 .textW {
     padding: 5px;
     color: rgba(255, 255, 255, 0.77);
