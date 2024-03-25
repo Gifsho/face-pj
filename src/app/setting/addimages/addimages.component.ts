@@ -56,7 +56,7 @@ export class AddimagesComponent {
       this.name = localStorage.getItem('name');
       this.email = localStorage.getItem('email');
       console.log(this.name);
-      console.log(this.userId);
+      console.log(this.aid);
     }
   }
 
