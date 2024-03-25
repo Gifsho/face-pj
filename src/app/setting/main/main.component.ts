@@ -54,7 +54,7 @@ export class MainComponent {
       this.name = localStorage.getItem('name');
       this.email = localStorage.getItem('email');
       console.log(this.name);
-      console.log(this.aid);
+      console.log(this.userId);
     }
   }
 
