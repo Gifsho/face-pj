@@ -7,7 +7,6 @@
             <img [src]="avatar_img" width="55px" height="50px"
                 style="border-radius: 50%; border: black; margin-right: 10px;">
             <span style="color:white; margin: 10px;">{{ aid }}:{{ name }}</span>
-<<<<<<< HEAD
             <button routerLinkActive="active-link" routerLink="/" class="Btn">
                 <div class="sign"><svg viewBox="0 0 512 512">
                         <path
@@ -16,11 +15,6 @@
                     </svg></div>
                 <div class="text">Logout</div>
             </button>
-=======
-            <a routerLinkActive="active-link" routerLink="/">
-                <span class="hoverspan">| Logout</span>
-            </a>
->>>>>>> dba5166d6622d3da0191dd6d1521abe4f98481e7
         </div>
     </mat-toolbar>
 </div>
@@ -56,7 +50,6 @@
                         <!-- เมื่อแสดงครบรูปแล้ว ให้แสดงรูปภาพเพิ่มเติม -->
                         <ng-container *ngIf="i === images.length - 1 && images && images.length < 5">
                             <div class="col-md-3 mb-2">
-<<<<<<< HEAD
                                 <div class="cardadd">
                                     <h2>
                                         <a [routerLink]="['/add-img', aid]">
@@ -66,12 +59,6 @@
                                         </a>
                                     </h2>
                                 </div>
-=======
-                                    <a [routerLink]="['/add-img', userId]">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Plus_symbol.svg/1200px-Plus_symbol.svg.png"
-                                        height="250px" width="200px" class="img_box" style="background: #66339955;">
-                                </a>
->>>>>>> dba5166d6622d3da0191dd6d1521abe4f98481e7
                             </div>
                         </ng-container>
                     </ng-container>
