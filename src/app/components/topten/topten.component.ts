@@ -34,7 +34,7 @@ export class ToptenComponent implements OnInit {
     }
 
     //getlocalStorage
-    this.aid = localStorage.getItem('aid')
+    this.aid = localStorage.getItem('aid');
     this.avatar_img = localStorage.getItem('avatar_img');
     this.name = localStorage.getItem('name');
     this.email = localStorage.getItem('email');

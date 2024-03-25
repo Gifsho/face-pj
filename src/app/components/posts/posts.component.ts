@@ -49,6 +49,11 @@ export class PostsComponent implements OnInit {
     this.getAllImages();
 
     this.getUsedetail();
+
+    this.aid = localStorage.getItem('aid');
+    this.avatar_img = localStorage.getItem('avatar_img');
+    this.name = localStorage.getItem('name');
+    this.email = localStorage.getItem('email');
   }
 
   getAllImages() {

@@ -38,49 +38,35 @@ export class AddimagesComponent {
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
-    private imageService: ImageService,
-    @Inject(PLATFORM_ID) private platformId: any
   ) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.userId = params['userId'];
-      if (this.userId) {
-        this.getUsedetail();
-      }
-    });
+    this.getUsedetail();  
 
-    if (isPlatformBrowser(this.platformId)) {
-      this.aid = localStorage.getItem('aid');
-      this.avatar_img = localStorage.getItem('avatar_img');
-      this.name = localStorage.getItem('name');
-      this.email = localStorage.getItem('email');
-      console.log(this.name);
-      console.log(this.aid);
-    }
+    this.aid = localStorage.getItem('aid');
+    this.avatar_img = localStorage.getItem('avatar_img');
+    this.name = localStorage.getItem('name');
+    this.email = localStorage.getItem('email');
   }
 
   getUsedetail() {
-    this.authService.getUsedetail(this.userId).subscribe(
-      (response: any) => {
-        if (response) {
-          this.aid = response?.aid;
-          this.avatar_img = response?.avatar_img;
-          this.name = response?.name;
-          this.email = response?.email;
+    this.route.queryParams.subscribe(params => {
+      this.userId = params['userId'];
+    });
+    this.authService.getUsedetail(this.userId)
+      .subscribe((response: any) => {
+        this.aid = response?.aid;
+        this.avatar_img = response?.avatar_img;
+        this.name = response?.name;
+        this.email = response?.email;
 
-          if (isPlatformBrowser(this.platformId)) {
-            localStorage.setItem('aid', this.aid);
+        localStorage.setItem('aid', this.aid);
             localStorage.setItem('avatar_img', this.avatar_img);
             localStorage.setItem('name', this.name);
             localStorage.setItem('email', this.email);
-          }
-        }
-      },
-      (error) => {
+      }, (error) => {
         console.error("Error occurred while fetching user details:", error);
-      }
-    );
+      });
   }
 
   // onFileSelected(event: any){
