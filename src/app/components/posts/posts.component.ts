@@ -38,6 +38,7 @@ export class PostsComponent implements OnInit {
   avatar_img: any;
   name: any;
   email: any;
+  aid: any;
 
   constructor(private imageService: ImageService,
     private eloService: EloService,
@@ -50,6 +51,7 @@ export class PostsComponent implements OnInit {
     this.getUsedetail();
 
     //getlocalStorage
+    this.aid = localStorage.getItem('aid');
     this.avatar_img = localStorage.getItem('avatar_img');
     this.name = localStorage.getItem('name');
     this.email = localStorage.getItem('email');
@@ -168,15 +170,18 @@ export class PostsComponent implements OnInit {
     this.authService.getUsedetail(this.userId)
       .subscribe((response: any) => {
 
+        this.aid = response?.aid;
         this.avatar_img = response?.avatar_img;
         this.name = response?.name;
         this.email = response?.email;
 
         // Set values in localStorage
+        localStorage.setItem('aid', this.aid);
         localStorage.setItem('avatar_img', this.avatar_img);
         localStorage.setItem('name', this.name);
         localStorage.setItem('email', this.email);
 
+        console.log(response?.aid);
         console.log(response?.avatar_img);
         console.log(response?.name);
         console.log(response?.email);
