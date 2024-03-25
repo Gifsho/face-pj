@@ -50,6 +50,7 @@ export class PostsComponent implements OnInit {
 
     this.getUsedetail();
 
+    //getlocalStorage
     this.aid = localStorage.getItem('aid');
     this.avatar_img = localStorage.getItem('avatar_img');
     this.name = localStorage.getItem('name');
@@ -163,17 +164,32 @@ export class PostsComponent implements OnInit {
 
   getUsedetail() {
     this.route.queryParams.subscribe(params => {
+      // Get the value of 'email' parameter from the URL
       this.userId = params['userId'];
     });
     this.authService.getUsedetail(this.userId)
       .subscribe((response: any) => {
+
         this.aid = response?.aid;
         this.avatar_img = response?.avatar_img;
         this.name = response?.name;
         this.email = response?.email;
+
+        // Set values in localStorage
+        localStorage.setItem('aid', this.aid);
+        localStorage.setItem('avatar_img', this.avatar_img);
+        localStorage.setItem('name', this.name);
+        localStorage.setItem('email', this.email);
+
+        console.log(response?.aid);
+        console.log(response?.avatar_img);
+        console.log(response?.name);
+        console.log(response?.email);
+
       }, (error) => {
         console.error("Error occurred while fetching user details:", error);
-      });
+      }
+      );
   }
 
 }
