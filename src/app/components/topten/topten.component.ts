@@ -27,17 +27,22 @@ export class ToptenComponent implements OnInit {
   constructor(private imageService: ImageService) { }
 
   async ngOnInit(): Promise<void> {
-    try {
-      this.topTenImages = await this.getTopTenImages();
-    } catch (error) {
-      console.error(error);
+    if (typeof localStorage !== 'undefined') {
+      try {
+        this.topTenImages = await this.getTopTenImages();
+      } catch (error) {
+        console.error(error);
+      }
+  
+      //getlocalStorage
+      this.aid = localStorage.getItem('aid');
+      this.avatar_img = localStorage.getItem('avatar_img');
+      this.name = localStorage.getItem('name');
+      this.email = localStorage.getItem('email');
+    } else {
+      console.warn('localStorage is not available. Skipping initialization.');
     }
-
-    //getlocalStorage
-    this.aid = localStorage.getItem('aid');
-    this.avatar_img = localStorage.getItem('avatar_img');
-    this.name = localStorage.getItem('name');
-    this.email = localStorage.getItem('email');
+  
   }
 
   async getTopTenImages(): Promise<any[]> {

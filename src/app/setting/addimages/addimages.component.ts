@@ -41,12 +41,17 @@ export class AddimagesComponent {
   ) { }
 
   ngOnInit(): void {
-    this.getUsedetail();  
+    if (typeof localStorage !== 'undefined') {
+      this.getUsedetail();
 
-    this.aid = localStorage.getItem('aid');
-    this.avatar_img = localStorage.getItem('avatar_img');
-    this.name = localStorage.getItem('name');
-    this.email = localStorage.getItem('email');
+      this.aid = localStorage.getItem('aid');
+      this.avatar_img = localStorage.getItem('avatar_img');
+      this.name = localStorage.getItem('name');
+      this.email = localStorage.getItem('email');
+    } else {
+      console.warn('localStorage is not available. Skipping initialization.');
+    }
+
   }
 
   getUsedetail() {
@@ -61,9 +66,9 @@ export class AddimagesComponent {
         this.email = response?.email;
 
         localStorage.setItem('aid', this.aid);
-            localStorage.setItem('avatar_img', this.avatar_img);
-            localStorage.setItem('name', this.name);
-            localStorage.setItem('email', this.email);
+        localStorage.setItem('avatar_img', this.avatar_img);
+        localStorage.setItem('name', this.name);
+        localStorage.setItem('email', this.email);
       }, (error) => {
         console.error("Error occurred while fetching user details:", error);
       });
