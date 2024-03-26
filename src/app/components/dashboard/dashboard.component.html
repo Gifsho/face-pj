@@ -3,8 +3,9 @@
         <div style="text-align: center;">
             <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">FACEMASH Admin Dashboard</span></a>
         </div>
-        <div class="rigth">
-            <img [src]="avatar_img" width="55px" height="50px" style="border-radius: 50%; border: black; margin-right: 10px;">
+        <div style="display: flex;">
+            <img [src]="avatar_img" width="55px" height="50px"
+                style="border-radius: 50%; border: black; margin-right: 10px;">
             <span style="color:white; margin: 10px;">{{ aid }}:{{ name }}</span>
             <button routerLinkActive="active-link" routerLink="/" class="Btn">
                 <div class="sign"><svg viewBox="0 0 512 512">
