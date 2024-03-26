@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsedetail();
-    this.getaccount();
+    this.fetchAccounts();
 
     //getlocalStorage
     this.aid = localStorage.getItem('aid');
@@ -76,14 +76,22 @@ export class DashboardComponent implements OnInit {
       );
   }
 
-  async getaccount(): Promise<void> {
+  async fetchAccounts(): Promise<void> {
+    try {
+        this.acall = await this.getaccount();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+  async getaccount(): Promise<any[]> {
     return new Promise((resolve, reject) => {
       this.authService.getaccount().subscribe(
         (data: any[]) => {
           console.log(data);
           this.acall = data; // เก็บข้อมูลที่ได้รับจาก backend ในตัวแปร acall
           console.log(this.acall);
-          resolve(); // แสดงว่าการรับข้อมูลเสร็จสมบูรณ์
+          resolve(data); // แสดงว่าการรับข้อมูลเสร็จสมบูรณ์
         },
         error => {
           console.error(error);
