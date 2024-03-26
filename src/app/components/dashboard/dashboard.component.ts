@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsedetail();
+    this.getaccount();
 
     //getlocalStorage
     this.aid = localStorage.getItem('aid');
