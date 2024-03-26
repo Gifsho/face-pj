@@ -74,6 +74,9 @@ export class AddimagesComponent {
       });
   }
 
+  getAdd() {
+    
+  }
   // onFileSelected(event: any){
   //   const file: File = event.target.files[0];
   //   if (file) {
