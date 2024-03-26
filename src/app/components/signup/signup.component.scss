@@ -98,3 +98,20 @@ a:hover {
     transform: translate(2px, 2px);
 }
 
+// .card {
+//     position: relative;
+//     width: 35%;
+//     height: 470px;
+// }
+
+.card img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%; /* ปรับให้ภาพที่แสดงมีขนาดไม่เกินขนาดของ div */
+    max-height: 100%;
+}
+
+  
+
