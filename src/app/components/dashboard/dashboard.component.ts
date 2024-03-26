@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
   name: any;
   email: any;
   aid: any;
+  acall: any[] = [];
 
   constructor(private authService: AuthService,
     private route: ActivatedRoute) { }
@@ -71,5 +72,24 @@ export class DashboardComponent implements OnInit {
       }
       );
   }
+
+  async getaccount(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.authService.getaccount().subscribe(
+        (data: any[]) => {
+          this.acall = data; // เก็บข้อมูลที่ได้รับจาก backend ในตัวแปร acall
+          console.log(this.acall);
+          resolve(); // แสดงว่าการรับข้อมูลเสร็จสมบูรณ์
+        },
+        error => {
+          console.error(error);
+          reject(error);
+        }
+      );
+    });
+  }
+
+  
+
 
 }

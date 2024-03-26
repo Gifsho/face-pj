@@ -73,4 +73,8 @@ export class AuthService {
     const geturl = `${this.url}/getUsedetail`;
     return this.http.post<any>(geturl, { userId });
   }
+
+  getaccount(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/getaccount`);
+  }
 }
