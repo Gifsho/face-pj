@@ -92,9 +92,9 @@ export class SignupComponent implements OnInit {
       };
       reader.readAsDataURL(file);
   
-      // this.signupForm.patchValue({
-      //   avatar_img: file.name // Set file name to the avatar_img field
-      // });
+      this.signupForm.patchValue({
+        avatar_img: file.name // Set file name to the avatar_img field
+      });
     }
   }
   
