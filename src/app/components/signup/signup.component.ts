@@ -10,10 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterLink, Router } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SnackbarService } from '../../services/snackbar.service';   
-import { response } from 'express';
-import { error } from 'console';
 import { GlobalConstants } from '../../global/global-constants';
 import { NavigationComponent } from '../navigation/navigation.component';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -30,6 +29,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
     RouterLink,
     MatToolbarModule,
     NavigationComponent,
+    CommonModule
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
@@ -37,6 +37,8 @@ import { NavigationComponent } from '../navigation/navigation.component';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   responseMessage: any;
+  selectedImage: string | ArrayBuffer | null = null; // Property to hold selected image URL
+
 
   constructor(private authService: AuthService,
               private router:Router,
@@ -50,7 +52,7 @@ export class SignupComponent implements OnInit {
 
   createFormGroup(): FormGroup {
     return new FormGroup({
-      avatar_img: new FormControl("", [Validators.required, Validators.minLength(2)]),//ต้องมีความยาวอย่างน้อย 2 ตัวอักษร
+      avatar_img: new FormControl("", [Validators.required]),
       name: new FormControl("", [Validators.required, Validators.pattern(GlobalConstants.nameRegex)]),
       email: new FormControl("", [Validators.required, Validators.pattern(GlobalConstants.emailRegex)]),//ตรวจสอบค่าที่รับมามีรูปแบบของอีเมล์
       password: new FormControl("", [
@@ -78,15 +80,24 @@ export class SignupComponent implements OnInit {
     );
   }
 
-
-  onFileSelected(event: any){
+  onFileSelected(event: any): void {
     const file: File = event.target.files[0];
     if (file) {
+      // Set selected image URL for preview
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target?.result) {
+          this.selectedImage = e.target.result;
+        }
+      };
+      reader.readAsDataURL(file);
+  
       this.signupForm.patchValue({
-        avatar_img: file.name // เซ็ตค่าชื่อไฟล์ให้กับฟิลด์ avatar_img
+        avatar_img: file.name // Set file name to the avatar_img field
       });
     }
   }
+  
   
   
 
