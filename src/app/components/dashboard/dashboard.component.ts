@@ -88,8 +88,8 @@ async getaccount(): Promise<any[]> {
   try {
     const data: any | undefined = await this.authService.getaccount().toPromise();
     if (data !== undefined) {
-      console.log(data);
-      this.acall = data;
+      console.log(data[0]);
+      this.acall = data[0];
       console.log(this.acall);
       return data;
     } else {
