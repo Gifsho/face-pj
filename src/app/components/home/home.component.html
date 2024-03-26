@@ -38,7 +38,7 @@
     </button>>
    
     <div class="row p-5">
-        <div class="col-md-5 hovercard">
+        <div class="col-md-5 hovercard" (click)="onClickC1()">
             <img [src]="character1Image.image_url" width="476px" height="476px" class="img_box">
             <div style="display: flex; align-items: center;">
                 <img [src]="character1Image.avatar_img" width="50px" height="45px" class="img_box change" alt="">
@@ -51,7 +51,7 @@
                 width="100%">
         </div>
 
-        <div class="col-md-5 hovercard">
+        <div class="col-md-5 hovercard" (click)="onClickC2()">
             <img [src]="character2Image.image_url" width="476px" height="476px" class="img_box">
             <div style="display: flex; align-items: center;">
                 <img [src]="character2Image.avatar_img" width="50px" height="45px" class="img_box change" alt="">
