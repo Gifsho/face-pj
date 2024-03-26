@@ -23,3 +23,21 @@
             <span style="margin-top: -10px;">SETTING</span> 
         </div>
     </div>
+
+    <div class="container" style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let account of acall">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Account ID: {{ account.aid }}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Username: {{ account.name }}</h5>
+                        <p class="card-text">Email: {{ account.email }}</p>
+                        <!-- Add more details here as needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    

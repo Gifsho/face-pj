@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { NgFor } from '@angular/common';
 
 
 
@@ -15,7 +16,8 @@ import { AuthService } from '../../services/auth.service';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    RouterLink
+    RouterLink,
+    NgFor
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
