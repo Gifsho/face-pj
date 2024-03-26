@@ -65,10 +65,10 @@ export class DashboardComponent implements OnInit {
         localStorage.setItem('name', this.name);
         localStorage.setItem('email', this.email);
 
-        console.log(response?.aid);
-        console.log(response?.avatar_img);
-        console.log(response?.name);
-        console.log(response?.email);
+        // console.log(response?.aid);
+        // console.log(response?.avatar_img);
+        // console.log(response?.name);
+        // console.log(response?.email);
 
       }, (error) => {
         console.error("Error occurred while fetching user details:", error);
@@ -86,10 +86,10 @@ export class DashboardComponent implements OnInit {
 
 async getaccount(): Promise<any[]> {
   try {
-    const data: any[] | undefined = await this.authService.getaccount().toPromise();
+    const data: any | undefined = await this.authService.getaccount().toPromise();
     if (data !== undefined) {
-      console.log(data);
-      this.acall = data;
+      this.acall = data[0];
+      console.log(this.acall);
       return data;
     } else {
       throw new Error("Data is undefined"); // โยน error ถ้า data เป็น undefined
