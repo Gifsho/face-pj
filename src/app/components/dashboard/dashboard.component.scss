@@ -41,3 +41,13 @@ a:hover {
     text-shadow: 0 0 30px rgb(0, 255, 34);
 }
 
+
+.card {
+    background-color: #cce6ff; /* ให้สีน้ำเงินอ่อน */
+    border: 1px solid #b3d9ff; /* เพิ่มเส้นขอบสีเทา */
+    border-radius: 5px; /* ทำให้มีเส้นโค้งมน */
+}
+.card-header {
+    background-color: #4d94ff; /* ให้สีน้ำเงินเข้ม */
+    color: white; /* ให้ข้อความเป็นสีขาว */
+}
