@@ -90,6 +90,7 @@ async getaccount(): Promise<any[]> {
     if (data !== undefined) {
       console.log(data);
       this.acall = data;
+      console.log(this.acall);
       return data;
     } else {
       throw new Error("Data is undefined"); // โยน error ถ้า data เป็น undefined
