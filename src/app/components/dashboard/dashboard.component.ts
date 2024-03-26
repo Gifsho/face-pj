@@ -65,10 +65,10 @@ export class DashboardComponent implements OnInit {
         localStorage.setItem('name', this.name);
         localStorage.setItem('email', this.email);
 
-        console.log(response?.aid);
-        console.log(response?.avatar_img);
-        console.log(response?.name);
-        console.log(response?.email);
+        // console.log(response?.aid);
+        // console.log(response?.avatar_img);
+        // console.log(response?.name);
+        // console.log(response?.email);
 
       }, (error) => {
         console.error("Error occurred while fetching user details:", error);
