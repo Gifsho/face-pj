@@ -75,6 +75,7 @@ export class AuthService {
   }
 
   getaccount(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.url}/getaccount`);
+    const url = `${this.url}/getaccount`;
+    return this.http.get<any[]>(url);
   }
 }
