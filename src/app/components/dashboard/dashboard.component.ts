@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { NgFor } from '@angular/common';
 
 
 
@@ -15,7 +16,8 @@ import { AuthService } from '../../services/auth.service';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    RouterLink
+    RouterLink,
+    NgFor
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
@@ -27,6 +29,7 @@ export class DashboardComponent implements OnInit {
   name: any;
   email: any;
   aid: any;
+  acall: any[] = [];
 
   constructor(private authService: AuthService,
     private route: ActivatedRoute) { }
@@ -34,6 +37,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsedetail();
+    this.fetchAccounts();
 
     //getlocalStorage
     this.aid = localStorage.getItem('aid');
@@ -71,5 +75,35 @@ export class DashboardComponent implements OnInit {
       }
       );
   }
+
+  async fetchAccounts(): Promise<void> {
+    try {
+        this.acall = await this.getaccount();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async getaccount(): Promise<any[]> {
+  try {
+    const data: any[] | undefined = await this.authService.getaccount().toPromise();
+    if (data !== undefined) {
+      console.log(data);
+      this.acall = data;
+      return data;
+    } else {
+      throw new Error("Data is undefined"); // โยน error ถ้า data เป็น undefined
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+
+
+
+  
+
 
 }
