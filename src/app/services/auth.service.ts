@@ -32,7 +32,7 @@ export class AuthService {
       .pipe(
         first(),
         tap(() => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/login']);
         }),
         catchError(this.errorHandlerService.handlerError<User>("signup"))
       );

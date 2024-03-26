@@ -65,7 +65,7 @@ export class SignupComponent implements OnInit {
       .subscribe((response:any)=> {
         this.responseMessage = response?.message;
         this.snackbarService.openSnackBar(this.responseMessage,"");
-        this.router.navigate(['/signup']);
+        this.router.navigate(['/login']);
       },(error) =>{
         if(error.error?.message)
         {
