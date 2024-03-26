@@ -84,22 +84,24 @@ export class DashboardComponent implements OnInit {
     }
 }
 
-  async getaccount(): Promise<any[]> {
-    return new Promise((resolve, reject) => {
-      this.authService.getaccount().subscribe(
-        (data: any[]) => {
-          console.log(data);
-          this.acall = data; // เก็บข้อมูลที่ได้รับจาก backend ในตัวแปร acall
-          console.log(this.acall);
-          resolve(data); // แสดงว่าการรับข้อมูลเสร็จสมบูรณ์
-        },
-        error => {
-          console.error(error);
-          reject(error);
-        }
-      );
-    });
+async getaccount(): Promise<any[]> {
+  try {
+    const data: any[] | undefined = await this.authService.getaccount().toPromise();
+    if (data !== undefined) {
+      console.log(data);
+      this.acall = data;
+      return data;
+    } else {
+      throw new Error("Data is undefined"); // โยน error ถ้า data เป็น undefined
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
+}
+
+
+
 
   
 
