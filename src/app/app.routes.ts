@@ -18,9 +18,10 @@ export const routes: Routes = [
     { path: "login", component: LoginComponent },
     { path: "signup", component: SignupComponent },
     { path: "topten", component: ToptenComponent },
+    { path: "toptennull", component: ToptenComponent },
     { path: "graph", component: GraphComponent },
     { path: "dashboard", component: DashboardComponent },
-    { path: "main/:id", component: MainComponent},
-    { path: "add-img/:id", component: AddimagesComponent},
+    { path: "main", component: MainComponent},
+    { path: "add-img", component: AddimagesComponent},
     { path: "**", redirectTo: "" },
 ];
