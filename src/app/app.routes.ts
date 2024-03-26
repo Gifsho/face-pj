@@ -10,6 +10,7 @@ import { GraphComponent } from './graph/graph.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MainComponent } from './setting/main/main.component';
 import { AddimagesComponent } from './setting/addimages/addimages.component';
+import { ToptennullComponent } from './components/toptennull/toptennull.component';
 
 
 export const routes: Routes = [
@@ -18,7 +19,7 @@ export const routes: Routes = [
     { path: "login", component: LoginComponent },
     { path: "signup", component: SignupComponent },
     { path: "topten", component: ToptenComponent },
-    { path: "toptennull", component: ToptenComponent },
+    { path: "toptennull", component: ToptennullComponent },
     { path: "graph", component: GraphComponent },
     { path: "dashboard", component: DashboardComponent },
     { path: "main", component: MainComponent},
