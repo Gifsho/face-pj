@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.authService.getaccount().subscribe(
         (data: any[]) => {
-          this.acall = data; // เก็บข้อมูลที่ได้รับจาก backend ในตัวแปร acall
+          this.acall = data[0]; // เก็บข้อมูลที่ได้รับจาก backend ในตัวแปร acall
           console.log(this.acall);
           resolve(); // แสดงว่าการรับข้อมูลเสร็จสมบูรณ์
         },
