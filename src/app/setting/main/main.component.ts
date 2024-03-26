@@ -40,21 +40,25 @@ export class MainComponent {
   ) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.userId = params['userId'];
-      if (this.userId) {
-        this.getUsedetail();
+    if (typeof localStorage !== 'undefined') {
+      this.route.queryParams.subscribe(params => {
+        this.userId = params['userId'];
+        if (this.userId) {
+          this.getUsedetail();
+        }
+      });
+  
+      this.getOnlyone();
+      if (isPlatformBrowser(this.platformId)) {
+        this.aid = localStorage.getItem('aid');
+        this.avatar_img = localStorage.getItem('avatar_img');
+        this.name = localStorage.getItem('name');
+        this.email = localStorage.getItem('email');
+        console.log(this.name);
+        console.log(this.aid);
       }
-    });
-
-    this.getOnlyone();
-    if (isPlatformBrowser(this.platformId)) {
-      this.aid = localStorage.getItem('aid');
-      this.avatar_img = localStorage.getItem('avatar_img');
-      this.name = localStorage.getItem('name');
-      this.email = localStorage.getItem('email');
-      console.log(this.name);
-      console.log(this.aid);
+    } else {
+      console.warn('localStorage is not available. Skipping initialization.');
     }
   }
 

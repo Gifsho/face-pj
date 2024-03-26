@@ -38,48 +38,48 @@ export class AddimagesComponent {
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
-    private imageService: ImageService,
-    @Inject(PLATFORM_ID) private platformId: any
   ) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.userId = params['userId'];
-      if (this.userId) {
-        this.getUsedetail();
-      }
-    });
+    if (typeof localStorage !== 'undefined') {
+      this.getUsedetail();
 
-    if (isPlatformBrowser(this.platformId)) {
       this.aid = localStorage.getItem('aid');
       this.avatar_img = localStorage.getItem('avatar_img');
       this.name = localStorage.getItem('name');
       this.email = localStorage.getItem('email');
-      console.log(this.name);
-      console.log(this.aid);
+    } else {
+      console.warn('localStorage is not available. Skipping initialization.');
     }
+
   }
 
   getUsedetail() {
-    this.authService.getUsedetail(this.userId).subscribe(
-      (response: any) => {
-        if (response) {
-          this.aid = response?.aid;
-          this.avatar_img = response?.avatar_img;
-          this.name = response?.name;
-          this.email = response?.email;
+    this.route.queryParams.subscribe(params => {
+      this.userId = params['userId'];
+    });
+    this.authService.getUsedetail(this.userId)
+      .subscribe((response: any) => {
+        this.aid = response?.aid;
+        this.avatar_img = response?.avatar_img;
+        this.name = response?.name;
+        this.email = response?.email;
 
-          if (isPlatformBrowser(this.platformId)) {
-            localStorage.setItem('aid', this.aid);
-            localStorage.setItem('avatar_img', this.avatar_img);
-            localStorage.setItem('name', this.name);
-            localStorage.setItem('email', this.email);
-          }
-        }
-      },
-      (error) => {
+        localStorage.setItem('aid', this.aid);
+        localStorage.setItem('avatar_img', this.avatar_img);
+        localStorage.setItem('name', this.name);
+        localStorage.setItem('email', this.email);
+      }, (error) => {
         console.error("Error occurred while fetching user details:", error);
-      }
-    );
+      });
   }
+
+  // onFileSelected(event: any){
+  //   const file: File = event.target.files[0];
+  //   if (file) {
+  //     this.signupForm.patchValue({
+  //       avatar_img: file.name // เซ็ตค่าชื่อไฟล์ให้กับฟิลด์ avatar_img
+  //     });
+  //   }
+  // }
 }

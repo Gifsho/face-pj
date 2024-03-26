@@ -46,15 +46,20 @@ export class PostsComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getAllImages();
+    if (typeof localStorage !== 'undefined') {
+      // ทำงานก็ต่อเมื่อมี localStorage ในฝั่งของเบราว์เซอร์
+      this.getAllImages();
+      this.getUsedetail();
 
-    this.getUsedetail();
+      this.aid = localStorage.getItem('aid');
+      this.avatar_img = localStorage.getItem('avatar_img');
+      this.name = localStorage.getItem('name');
+      this.email = localStorage.getItem('email');
+    } else {
+      console.warn('localStorage is not available. Skipping initialization.');
+    }
 
-    //getlocalStorage
-    this.aid = localStorage.getItem('aid');
-    this.avatar_img = localStorage.getItem('avatar_img');
-    this.name = localStorage.getItem('name');
-    this.email = localStorage.getItem('email');
+
   }
 
   getAllImages() {

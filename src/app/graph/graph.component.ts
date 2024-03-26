@@ -27,13 +27,17 @@ export class GraphComponent implements OnInit {
   constructor(private imageService: ImageService) { }
 
   ngOnInit(): void {
-    this.getGraph();
+    if (typeof localStorage !== 'undefined') {
+      this.getGraph();
 
-    //getlocalStorage
-    this.aid = localStorage.getItem('aid');
-    this.avatar_img = localStorage.getItem('avatar_img');
-    this.name = localStorage.getItem('name');
-    this.email = localStorage.getItem('email');
+      //getlocalStorage
+      this.aid = localStorage.getItem('aid');
+      this.avatar_img = localStorage.getItem('avatar_img');
+      this.name = localStorage.getItem('name');
+      this.email = localStorage.getItem('email');
+    } else {
+      console.warn('localStorage is not available. Skipping initialization.');
+    }
   }
 
   getGraph(): void {

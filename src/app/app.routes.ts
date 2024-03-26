@@ -21,6 +21,6 @@ export const routes: Routes = [
     { path: "graph", component: GraphComponent },
     { path: "dashboard", component: DashboardComponent },
     { path: "main/:id", component: MainComponent},
-    { path: "add-img", component: AddimagesComponent},
+    { path: "add-img/:id", component: AddimagesComponent},
     { path: "**", redirectTo: "" },
 ];

@@ -1,3 +1,257 @@
+<style>
+    
+.hovercard {
+    position: relative;
+    width: 500px;
+    height: 574.6px;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 12px;
+    gap: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.hovercard::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -5px;
+    margin: auto;
+    width: 510px;
+    height: 584.6px;
+    border-radius: 10px;
+    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+    z-index: -10;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.hovercard::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(20px);
+}
+.heading {
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+.hovercard p:not(.heading) {
+    font-size: 14px;
+}
+.hovercard p:last-child {
+    color: #e81cff;
+    font-weight: 600;
+}
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 13rem;
+    overflow: hidden;
+    height: 3rem;
+    background-size: 300% 300%;
+    backdrop-filter: blur(1rem);
+    border-radius: 5rem;
+    transition: 0.5s;
+    animation: gradient_301 5s ease infinite;
+    border: double 4px transparent;
+    background-image: linear-gradient(#212121, #212121), linear-gradient(137.48deg, #ffdb3b 10%, #FE53BB 45%, #8F51EA 67%, #0044ff 87%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+#container-stars {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: 0.5s;
+    backdrop-filter: blur(1rem);
+    border-radius: 5rem;
+}
+strong {
+    z-index: 2;
+    font-family: 'Avalors Personal Use';
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #FFFFFF;
+    text-shadow: 0 0 4px white;
+}
+#glow {
+    position: absolute;
+    display: flex;
+    width: 12rem;
+}
+.circle {
+    width: 100%;
+    height: 30px;
+    filter: blur(2rem);
+    animation: pulse_3011 4s infinite;
+    z-index: -1;
+}
+.circle:nth-of-type(1) {
+    background: rgba(254, 83, 186, 0.636);
+}
+.circle:nth-of-type(2) {
+    background: rgba(142, 81, 234, 0.704);
+}
+.btn:hover #container-stars {
+    z-index: 1;
+    background-color: #212121;
+}
+.btn:active {
+    border: double 4px #FE53BB;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    animation: none;
+}
+.btn:active .circle {
+    background: #FE53BB;
+}
+#stars {
+    position: relative;
+    background: transparent;
+    width: 200rem;
+    height: 200rem;
+}
+#stars::after {
+    content: "";
+    position: absolute;
+    top: -10rem;
+    left: -100rem;
+    width: 100%;
+    height: 100%;
+    animation: animStarRotate 90s linear infinite;
+}
+#stars::after {
+    background-image: radial-gradient(#ffffff 1px, transparent 1%);
+    background-size: 50px 50px;
+}
+#stars::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 170%;
+    height: 500%;
+    animation: animStar 60s linear infinite;
+}
+#stars::before {
+    background-image: radial-gradient(#ffffff 1px, transparent 1%);
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+@keyframes animStar {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-135rem);
+    }
+}
+@keyframes animStarRotate {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0);
+    }
+}
+@keyframes gradient_301 {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+@keyframes pulse_3011 {
+    0% {
+        transform: scale(0.75);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        transform: scale(0.75);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+.Btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(71, 65, 255);
+}
+.sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign svg {
+    width: 17px;
+}
+.sign svg path {
+    fill: white;
+}
+.text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.0em;
+    font-weight: 600;
+    transition-duration: .3s;
+}
+.Btn:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+}
+.Btn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+}
+.Btn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+.Btn:active {
+    transform: translate(2px, 2px);
+}
+</style>
 <div class="cotainer">
     <mat-toolbar style="display: flex; justify-content: space-between; margin-top: -100px;">
         <div style="text-align: center;">
@@ -5,28 +259,45 @@
         </div>
         <div class="rigth">
             <!-- <img src="https://shorturl.at/iqyC7" alt="avatar" width="30px" style="border-radius: 50%; border: black; margin-right: 10px;"> -->
-            <a routerLinkActive="active-link" routerLink="/login">
-                <span>LogIn</span>
-            </a>
+            <button routerLinkActive="active-link" routerLink="/login" class="Btn">
+                <div class="sign"><svg viewBox="0 0 512 512">
+                        <path
+                            d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+                        </path>
+                    </svg></div>
+                <div class="text">Login</div>
+            </button>
         </div>
     </mat-toolbar>
 </div>
 
 <div class="container" style="margin-top: 100px;">
-    <div class="card p-4" style="margin-bottom: 20px; height: 50px; border-radius: 30px; background-color: #f0f8ff86;">
-        <div style="display: flex; justify-content: space-around;">
-            <a routerLink="/"> <span style="color: brown; font-weight: bolder;">HOME</span> </a>
-            <a routerLink="/topten"> <span>TOP10</span> </a>
-            <a routerLink="/graph"><span>STATISTICS/WEEK</span></a>
-            <a [routerLink]="['/main']"><span style="margin-top: -10px;">SETTING</span> </a>
+    <button class="btn" type="button" style="width: 100%">
+        <strong>
+            <div style="display: flex; justify-content: space-around; font-size: 20px;">
+                <a routerLink="/posts" style="padding: 0 60px;"> <span style="color: brown; font-weight: bolder;">HOME</span> </a>
+                <a routerLink="/topten" style="padding: 0 60px;"> <span>TOP10</span> </a>
+                <a [routerLink]="['/main']" style="padding: 0 60px;"><span>STATISTICS/WEEK</span></a>
+                <a [routerLink]="['/main']" style="padding: 0 60px;"><span style="margin-top: -10px;">SETTING</span> </a>
+            </div>
+        </strong>
+        <div id="container-stars">
+            <div id="stars"></div>
         </div>
-    </div>
+
+        <div id="glow">
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+    </button>>
    
     <div class="row p-5">
-        <div class="col-md-5" (click)="onClickC1()">
-            <img [src]="character1Image.avatar_img" width="10%" height="8%" class="img_box change mt-3 mb-3" style="display: inline-block;">
-            <h2 style="color: white; padding: 10px; display: inline-block;">{{ character1Image.name }}</h2>
-            <img [src]="character1Image.image_url" width="100%" class="img_box mb-2">
+        <div class="col-md-5 hovercard">
+            <img [src]="character1Image.image_url" width="476px" height="476px" class="img_box">
+            <div style="display: flex; align-items: center;">
+                <img [src]="character1Image.avatar_img" width="50px" height="45px" class="img_box change" alt="">
+                <p class="p-2" style="margin-top:15px">{{ character1Image.name }}</p>
+            </div>
         </div>
         
         <div class="col-md-2" style="display: flex; align-items: center;">
@@ -34,10 +305,12 @@
                 width="100%">
         </div>
 
-        <div class="col-md-5" (click)="onClickC2()">
-            <img [src]="character1Image.avatar_img" width="10%" height="8%" class="img_box change mt-3 mb-3" style="display: inline-block;">
-            <h2 style="color: white; padding: 10px; display: inline-block;">{{ character2Image.name }}</h2>
-            <img [src]="character2Image.image_url" width="100%" class="img_box mb-2">
+        <div class="col-md-5 hovercard">
+            <img [src]="character2Image.image_url" width="476px" height="476px" class="img_box">
+            <div style="display: flex; align-items: center;">
+                <img [src]="character2Image.avatar_img" width="50px" height="45px" class="img_box change" alt="">
+                <p class="p-2" style="margin-top:15px">{{ character2Image.name }}</p>
+            </div>
         </div>
     </div>
 </div>
