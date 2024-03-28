@@ -45,13 +45,6 @@ export class ChAvatarimgComponent implements OnInit {
       }
     }
 
-    // if (this.avatar_img !== null) {
-    //   const newAvatarImgControl = this.AvatarForm.get('newAvatarImg');
-    //   if (newAvatarImgControl !== null) { // Null check
-    //     newAvatarImgControl.setValue(this.avatar_img);
-        
-    //   }
-    // }
     this.selectedImage = this.avatar_img;
   }
 
