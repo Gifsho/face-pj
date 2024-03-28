@@ -38,7 +38,7 @@ export class ChangpasswordComponent implements OnInit {
     this.passwordForm = this.createFormGroup();
 
     this.aid = localStorage.getItem('aid');
-    console.log(this.aid);
+    // console.log(this.aid);
 
     if (this.aid !== null) {
       const userIdControl = this.passwordForm.get('userId');
