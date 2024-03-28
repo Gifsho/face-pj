@@ -1,1 +1,20 @@
-<p>ch-avatarimg works!</p>
+
+<mat-toolbar>
+    <div style="text-align: center;">
+      <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">Edit profile</span></a>
+    </div>
+  </mat-toolbar>
+  
+  <div class="container" style="display: flex; justify-content: center; margin-top: 100px;">
+    <div class="card" style="background: #ffffff5b; width: 35%; height: 400px;">
+      <form [formGroup]="AvatarForm" (ngSubmit)="changeAvatarImg()" style="width: 100%; padding: 50px;" novalidate>
+        <h2 style="text-align: center; font-weight: bolder;">Change Image</h2>
+        <div>
+          <label for="newAvatarImg">choose Image</label>
+          <input type="text" formControlName="newAvatarImg" />
+        </div>
+        <button type="submit" [disabled]="AvatarForm.invalid">Change Imgge</button>
+      </form>
+    </div>
+  </div>
+  

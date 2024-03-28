@@ -1,12 +1,86 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-ch-avatarimg',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule,
+            CommonModule,
+            MatToolbarModule,
+            MatFormFieldModule,
+            MatButtonModule,
+            MatInputModule],
   templateUrl: './ch-avatarimg.component.html',
   styleUrl: './ch-avatarimg.component.scss'
 })
-export class ChAvatarimgComponent {
+export class ChAvatarimgComponent implements OnInit {
+  errorMessage: string = '';
+  AvatarForm: FormGroup = new FormGroup({}); 
+  aid: any;
+  avatar_img: any;
 
+  constructor(private http: HttpClient,
+    private snackbarService: SnackbarService) { }
+
+  ngOnInit(): void {
+    this.AvatarForm = this.createFormGroup();
+
+    this.aid = localStorage.getItem('aid');
+    this.avatar_img = localStorage.getItem('avatar_img');
+    // console.log(this.aid);
+
+    if (this.aid !== null) {
+      const userIdControl = this.AvatarForm.get('userId');
+      if (userIdControl !== null) { // Null check
+        userIdControl.setValue(this.aid);
+      }
+    }
+
+    if (this.avatar_img !== null) {
+      const newNameControl = this.AvatarForm.get('newAvatarImg');
+      if (newNameControl !== null) { // Null check
+        newNameControl.setValue(this.avatar_img);
+      }
+    }
+  }
+
+  createFormGroup(): FormGroup {
+    return new FormGroup({
+      userId: new FormControl('', Validators.required),
+      newAvatarImg: new FormControl('', Validators.required), // เปลี่ยนชื่อ control เป็น 'newAvatarImg'
+    });
+  }
+
+  changeAvatarImg() { // เปลี่ยนชื่อเมธอดเป็น changeAvatarImg()
+    if (this.AvatarForm.invalid) {
+      return;
+    }
+
+    const body = this.AvatarForm.value;
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    this.http.put<any>('https://example.com/auth/changeAvatar', body, { headers }) // เปลี่ยน URL เป็น URL ที่ถูกต้อง
+      .subscribe({
+        next: () => {
+          console.log('Avatar changed successfully.'); // เปลี่ยนข้อความเป็นข้อความที่เหมาะสมสำหรับการเปลี่ยนรูปภาพ avatar
+          this.snackbarService.openSnackBar('Avatar changed successfully.', 'success');
+          this.AvatarForm.reset();
+          this.errorMessage = '';
+        },
+        error: (error) => {
+          console.error('Error occurred:', error);
+          this.errorMessage = 'An error occurred. Please try again later.';
+          this.snackbarService.openSnackBar(this.errorMessage, 'error');
+        }
+      });
+  }
 }
