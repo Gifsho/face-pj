@@ -27,7 +27,7 @@ export class ShowimgComponent implements OnInit {
       .then((data: any) => {
         // this.imgAll = data[1];
         console.log(data);
-        this.imgAll = data;
+        this.imgAll = data[0];
         console.log(this.imgAll); 
       })
       .catch(error => {
