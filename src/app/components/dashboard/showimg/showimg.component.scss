@@ -1,0 +1,13 @@
+.img-thumbnail {
+    max-width: 100%; /* กำหนดให้รูปมีความกว้างสูงสุดเท่ากับ container */
+    height: auto; /* ให้รูปปรับขนาดตามอัตราส่วน */
+    display: block; /* กำหนดให้รูปเป็น block element เพื่อให้สามารถกำหนด margin และ padding ได้ */
+    margin: 10px auto; /* กำหนด margin ของรูป เพื่อให้รูปมีพื้นที่รอบข้าง */
+}
+
+.image-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* จำนวนคอลัมน์และขนาดของคอลัมน์จะปรับแต่งตามขนาดของ container */
+    gap: 20px; /* กำหนดระยะห่างระหว่างรูป */
+}
+
