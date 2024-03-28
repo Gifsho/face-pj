@@ -6,18 +6,25 @@
 
 
 <div class="container" style="display: flex; justify-content: center; margin-top: 100px;">
-    <div class="card" style="background: #ffffff5b; width: 35%; height: 400px;">
-        <form [formGroup]="AvatarForm" (ngSubmit)="changeAvatarImg()" style="width: 100%; padding: 50px;" novalidate>
-            <div *ngIf="avatar_img" style="display: flex; justify-content: center; align-items: center;">
-                <img [src]="avatar_img" alt="Selected Image"
+    <div class="card" style="background: #ffffff5b; width: 35%; height: auto;">
+        <form [formGroup]="AvatarForm" style="width: 100%; padding: 50px;" (ngSubmit)="changeAvatarImg()" novalidate>
+            <h2 style="text-align: center; font-weight: bolder; margin-top: -20px;">Change Avatar</h2>
+            <div *ngIf="selectedImage" style="display: flex; justify-content: center; align-items: center;">
+                <img [src]="selectedImage" class="card img" alt="Selected Image"
                     style="border-radius: 50%; width: 150px; height: 150px;">
             </div>
-            <h2 style="text-align: center; font-weight: bolder;">Change Image</h2>
-            <div>
-                <label for="newAvatarImg">Change Image</label>
-                <input type="file" formControlName="newAvatarImg" (change)="onFileSelected($event)" accept="image/*">
+            <h3>Choose New Avatar image</h3>
+            <input type="file" (change)="onFileSelected($event)" accept="image/*" placeholder="Choose Image"
+                style="margin-bottom: 20px;">
+            <mat-form-field>
+                <mat-label>New Avatar Image</mat-label>
+                <input matInput placeholder="Enter New Avatar Image" formControlName="newAvatarImg">
+            </mat-form-field>
+            <div style="display: flex; justify-content: center;">
+                <button color="accent" [disabled]="AvatarForm.invalid" mat-raised-button type="submit">
+                    <span>Change Avatar</span>
+                </button>
             </div>
-            <button type="submit" [disabled]="AvatarForm.invalid">Change Image</button>
         </form>
     </div>
 </div>
