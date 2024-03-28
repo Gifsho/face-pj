@@ -26,7 +26,7 @@
                 <a routerLink="/posts" style="padding: 0 60px;"> <span style="color: brown; font-weight: bolder;">HOME</span> </a>
                 <a routerLink="/topten" style="padding: 0 60px;"> <span>TOP10</span> </a>
                 <a routerLink="/graph" style="padding: 0 60px;"><span>STATISTICS/WEEK</span></a>
-                <a routerLink="/main" style="padding: 0 60px;"><span style="margin-top: -10px;">SETTING</span> </a>
+                <a [routerLink]="['/main']" [queryParams]="{ userId: userId }" style="padding: 0 60px;"><span style="margin-top: -10px;">SETTING</span> </a>
             </div>
         </strong>
         <div id="container-stars">

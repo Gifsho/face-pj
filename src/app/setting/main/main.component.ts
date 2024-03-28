@@ -46,7 +46,7 @@ export class MainComponent {
 
   ngOnInit(): void {
     if (typeof localStorage !== 'undefined') {
-      // this.getUsedetail();
+      this.getUsedetail();
       this.getOnlyone();
       this.aid = localStorage.getItem('aid');
       this.avatar_img = localStorage.getItem('avatar_img');
@@ -58,25 +58,25 @@ export class MainComponent {
 
   }
 
-  // getUsedetail() {
-  //   this.route.queryParams.subscribe(params => {
-  //     this.userId = params['userId'];
-  //   });
-  //   this.authService.getUsedetail(this.userId)
-  //     .subscribe((response: any) => {
-  //       this.aid = response?.aid;
-  //       this.avatar_img = response?.avatar_img;
-  //       this.name = response?.name;
-  //       this.email = response?.email;
+  getUsedetail() {
+    this.route.queryParams.subscribe(params => {
+      this.userId = params['userId'];
+    });
+    this.authService.getUsedetail(this.userId)
+      .subscribe((response: any) => {
+        this.aid = response?.aid;
+        this.avatar_img = response?.avatar_img;
+        this.name = response?.name;
+        this.email = response?.email;
 
-  //       localStorage.setItem('aid', this.aid);
-  //       localStorage.setItem('avatar_img', this.avatar_img);
-  //       localStorage.setItem('name', this.name);
-  //       localStorage.setItem('email', this.email);
-  //     }, (error) => {
-  //       console.error("Error occurred while fetching user details:", error);
-  //     });
-  // }
+        localStorage.setItem('aid', this.aid);
+        localStorage.setItem('avatar_img', this.avatar_img);
+        localStorage.setItem('name', this.name);
+        localStorage.setItem('email', this.email);
+      }, (error) => {
+        console.error("Error occurred while fetching user details:", error);
+      });
+  }
 
   getOnlyone() {
     this.aid = localStorage.getItem('aid');
