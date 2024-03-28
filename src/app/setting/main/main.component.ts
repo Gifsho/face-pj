@@ -89,7 +89,7 @@ export class MainComponent {
 
   changpw() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = "550px";
+    dialogConfig.width = "1000px";
     this.dialog.open(ChangpasswordComponent,dialogConfig);
   }
 
