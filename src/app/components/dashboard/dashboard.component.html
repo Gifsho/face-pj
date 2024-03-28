@@ -37,7 +37,11 @@
                         Account ID: {{ account.aid }}
                     </div>
                     <div class="card-body">
-                        <img [src]="account.avatar_img" width="55px" height="50px" style="display: flex; justify-content: center; align-items: center;">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <img [src]="account.avatar_img" width="55px" height="50px" class="card img" alt="Selected Image"
+                                style="border-radius: 50%; width: 150px; height: 150px;">
+                        </div>
+                        <!-- <img [src]="account.avatar_img" width="55px" height="50px"> -->
                         <h5 class="card-title">Username: {{ account.name }}</h5>
                         <p class="card-text">Email: {{ account.email }}</p>
                         <!-- <button class="btn btn-primary" style="float: right;" (click)="showimg()">Show Image</button> -->
