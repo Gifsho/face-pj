@@ -33,8 +33,8 @@ export class ShowimgComponent implements OnInit {
         return response.json();
       })
       .then((data: any) => {
-        console.log(data);
-        console.log(data[0]);
+        // console.log(data);
+        // console.log(data[0]);
         this.imgAll = data[0];
         console.log(this.imgAll);
       })
