@@ -25,7 +25,9 @@ export class ShowimgComponent implements OnInit {
         return response.json();
       })
       .then((data: any) => {
-        this.imgAll = data[1];
+        // this.imgAll = data[1];
+        console.log(data);
+        this.imgAll = data;
         console.log(this.imgAll); 
       })
       .catch(error => {
