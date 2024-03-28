@@ -19,7 +19,7 @@ export class ShowimgComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    console.log(this.aid);
     fetch(`https://facemashbackend.onrender.com/img/fetchAllUserImg/${this.aid}`)
       .then((response: Response) => {
         if (!response.ok) {
