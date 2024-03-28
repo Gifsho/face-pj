@@ -88,6 +88,7 @@ export class ChAvatarimgComponent implements OnInit {
 
     reader.onload = (e: any) => {
       this.selectedImage = e.target.result;
+      console.log(this.selectedImage);
 
       if (file !== null) {
         const newAvatarImgControl = this.AvatarForm.get('newAvatarImg');
