@@ -20,11 +20,10 @@ export class ShowimgComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.aid = data.aid;
+    this.name = data.name;
   }
 
   ngOnInit(): void {
-
-    this.name = localStorage.getItem('name');
 
     fetch(`https://facemashbackend.onrender.com/img/fetchAllUserImg/${this.aid}`)
       .then((response: Response) => {
