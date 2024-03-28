@@ -1,20 +1,22 @@
-
 <mat-toolbar>
     <div style="text-align: center;">
-      <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">Edit profile</span></a>
+        <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">Edit profile</span></a>
     </div>
-  </mat-toolbar>
-  
-  <div class="container" style="display: flex; justify-content: center; margin-top: 100px;">
+</mat-toolbar>
+
+<div *ngIf="selectedImage">
+    <img [src]="selectedImage" alt="Selected Image" style="border-radius: 50%; width: 150px; height: 150px;">
+</div>
+
+<div class="container" style="display: flex; justify-content: center; margin-top: 100px;">
     <div class="card" style="background: #ffffff5b; width: 35%; height: 400px;">
-      <form [formGroup]="AvatarForm" (ngSubmit)="changeAvatarImg()" style="width: 100%; padding: 50px;" novalidate>
-        <h2 style="text-align: center; font-weight: bolder;">Change Image</h2>
-        <div>
-          <label for="newAvatarImg">choose Image</label>
-          <input type="text" formControlName="newAvatarImg" />
-        </div>
-        <button type="submit" [disabled]="AvatarForm.invalid">Change Imgge</button>
-      </form>
+        <form [formGroup]="AvatarForm" (ngSubmit)="changeAvatarImg()" style="width: 100%; padding: 50px;" novalidate>
+            <h2 style="text-align: center; font-weight: bolder;">Change Image</h2>
+            <div>
+                <label for="newAvatarImg">Choose Image</label>
+                <input type="file" id="newAvatarImg" (change)="onFileSelected($event)" accept="image/*">
+            </div>
+            <button type="submit" [disabled]="AvatarForm.invalid">Change Imgge</button>
+        </form>
     </div>
-  </div>
-  
+</div>

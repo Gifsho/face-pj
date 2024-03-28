@@ -13,19 +13,20 @@ import { SnackbarService } from '../../services/snackbar.service';
   selector: 'app-ch-avatarimg',
   standalone: true,
   imports: [ReactiveFormsModule,
-            CommonModule,
-            MatToolbarModule,
-            MatFormFieldModule,
-            MatButtonModule,
-            MatInputModule],
+    CommonModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule],
   templateUrl: './ch-avatarimg.component.html',
   styleUrl: './ch-avatarimg.component.scss'
 })
 export class ChAvatarimgComponent implements OnInit {
   errorMessage: string = '';
-  AvatarForm: FormGroup = new FormGroup({}); 
+  AvatarForm: FormGroup = new FormGroup({});
   aid: any;
   avatar_img: any;
+  selectedImage: any;
 
   constructor(private http: HttpClient,
     private snackbarService: SnackbarService) { }
@@ -83,4 +84,16 @@ export class ChAvatarimgComponent implements OnInit {
         }
       });
   }
+
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.selectedImage = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+
 }
