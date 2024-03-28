@@ -72,7 +72,7 @@ export class ChAvatarimgComponent implements OnInit {
     this.http.put<any>('https://facemashbackend.onrender.com/auth/changeAvatar', body, { headers }) 
       .subscribe({
         next: () => {
-          console.log('Avatar changed successfully.'); // เปลี่ยนข้อความเป็นข้อความที่เหมาะสมสำหรับการเปลี่ยนรูปภาพ avatar
+          console.log('Avatar changed successfully.'); 
           this.snackbarService.openSnackBar('Avatar changed successfully.', 'success');
           this.AvatarForm.reset();
           this.errorMessage = '';
