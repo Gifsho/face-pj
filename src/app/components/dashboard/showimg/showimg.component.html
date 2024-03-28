@@ -1,1 +1,7 @@
-<p>showimg works!</p>
+<div class="image-container">
+    <h2>Images</h2>
+    <div *ngFor="let img of imgAll">
+      <img [src]="img.url" alt="Image" class="img-thumbnail">
+    </div>
+  </div>
+  

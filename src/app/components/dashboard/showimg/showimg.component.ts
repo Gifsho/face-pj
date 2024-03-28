@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-showimg',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './showimg.component.html',
   styleUrl: './showimg.component.scss'
 })
