@@ -49,10 +49,10 @@ export class ChAvatarimgComponent implements OnInit {
       const newAvatarImgControl = this.AvatarForm.get('newAvatarImg');
       if (newAvatarImgControl !== null) { // Null check
         newAvatarImgControl.setValue(this.avatar_img);
-        
+        this.selectedImage = this.avatar_img;
       }
     }
-    // this.selectedImage = this.avatar_img;
+    
   }
 
   createFormGroup(): FormGroup {
@@ -93,7 +93,7 @@ export class ChAvatarimgComponent implements OnInit {
     const file: File = event.target.files[0];
     const reader = new FileReader();
     reader.onload = (e: any) => {
-      this.avatar_img = e.target.result;
+      this.selectedImage = e.target.result;
     };
     reader.readAsDataURL(file);
   }
