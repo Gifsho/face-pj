@@ -39,6 +39,13 @@ export class ChangpasswordComponent implements OnInit {
 
     this.aid = localStorage.getItem('aid');
     console.log(this.aid);
+
+    if (this.aid !== null) {
+      const userIdControl = this.passwordForm.get('userId');
+      if (userIdControl !== null) { // Null check
+        userIdControl.setValue(this.aid);
+      }
+    }
   }
 
   createFormGroup(): FormGroup {
@@ -56,6 +63,7 @@ export class ChangpasswordComponent implements OnInit {
     }
 
     const body = this.passwordForm.value;
+    
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     this.http.put<any>('https://facemashbackend.onrender.com/auth/updatePassword', body, { headers })
