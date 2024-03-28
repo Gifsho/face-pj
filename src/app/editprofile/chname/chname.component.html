@@ -1,1 +1,24 @@
-<p>chname works!</p>
+
+<mat-toolbar>
+    <div style="text-align: center;">
+      <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">FACEMASH</span></a>
+    </div>
+  </mat-toolbar>
+  
+  <div class="container" style="display: flex; justify-content: center; margin-top: 100px;">
+    <div class="card" style="background: #ffffff5b; width: 35%; height: 400px;">
+      <form [formGroup]="nameForm" (ngSubmit)="changeName()" style="width: 100%; padding: 50px;" novalidate>
+        <h2 style="text-align: center; font-weight: bolder;">Change Name</h2>
+        <div>
+          <label for="userId">User ID:</label>
+          <input type="text" formControlName="userId" readonly />
+        </div>
+        <div>
+          <label for="newName">New Name:</label>
+          <input type="text" formControlName="newName" />
+        </div>
+        <button type="submit" [disabled]="nameForm.invalid">Change Name</button>
+      </form>
+    </div>
+  </div>
+  
