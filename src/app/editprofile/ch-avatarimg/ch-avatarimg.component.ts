@@ -56,11 +56,11 @@ export class ChAvatarimgComponent implements OnInit {
   createFormGroup(): FormGroup {
     return new FormGroup({
       userId: new FormControl('', Validators.required),
-      newAvatarImg: new FormControl('', Validators.required), // เปลี่ยนชื่อ control เป็น 'newAvatarImg'
+      newAvatarImg: new FormControl('', Validators.required),
     });
   }
 
-  changeAvatarImg() { // เปลี่ยนชื่อเมธอดเป็น changeAvatarImg()
+  changeAvatarImg() { 
     if (this.AvatarForm.invalid) {
       return;
     }
@@ -69,7 +69,7 @@ export class ChAvatarimgComponent implements OnInit {
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    this.http.put<any>('https://example.com/auth/changeAvatar', body, { headers }) // เปลี่ยน URL เป็น URL ที่ถูกต้อง
+    this.http.put<any>('https://facemashbackend.onrender.com/auth/changeAvatar', body, { headers }) 
       .subscribe({
         next: () => {
           console.log('Avatar changed successfully.'); // เปลี่ยนข้อความเป็นข้อความที่เหมาะสมสำหรับการเปลี่ยนรูปภาพ avatar
