@@ -56,10 +56,11 @@ export class ChnameComponent implements OnInit {
       return;
     }
 
-    const body = {
-      userId: this.nameForm.value.userId,
-      newName: this.nameForm.value.newName
-    };
+    // const body = {
+    //   userId: this.nameForm.value.userId,
+    //   newName: this.nameForm.value.newName
+    // };
+    const body = this.nameForm.value;
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
