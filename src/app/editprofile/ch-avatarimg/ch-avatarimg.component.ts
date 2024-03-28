@@ -85,6 +85,7 @@ export class ChAvatarimgComponent implements OnInit {
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     const reader = new FileReader();
+    console.log(reader);
 
     reader.onload = (e: any) => {
       this.selectedImage = e.target.result;
