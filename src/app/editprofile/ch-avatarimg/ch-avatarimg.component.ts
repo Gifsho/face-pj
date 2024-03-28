@@ -67,6 +67,7 @@ export class ChAvatarimgComponent implements OnInit {
     }
 
     const body = this.AvatarForm.value;
+    console.log(body);
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
