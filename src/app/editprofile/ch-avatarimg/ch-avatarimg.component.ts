@@ -92,7 +92,7 @@ export class ChAvatarimgComponent implements OnInit {
       if (file !== null) {
         const newAvatarImgControl = this.AvatarForm.get('newAvatarImg');
         if (newAvatarImgControl !== null) { // Null check
-          newAvatarImgControl.setValue(file);
+          newAvatarImgControl.setValue(this.selectedImage);
         }
       }
 
