@@ -10,6 +10,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ChangpasswordComponent } from '../../editprofile/changpassword/changpassword.component';
 import { ChnameComponent } from '../../editprofile/chname/chname.component';
+import { ChAvatarimgComponent } from '../../editprofile/ch-avatarimg/ch-avatarimg.component';
 
 
 @Component({
@@ -91,18 +92,25 @@ export class MainComponent {
     );
   }
 
-  changpw() {
+  changepw() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = "1000px";
     dialogConfig.width = "1000px";
     this.dialog.open(ChangpasswordComponent,dialogConfig);
   }
 
-  changname() {
+  changename() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = "1000px";
     dialogConfig.width = "1000px";
     this.dialog.open(ChnameComponent,dialogConfig);
+    }
+
+    changeAvatar() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "1000px";
+    dialogConfig.width = "1000px";
+    this.dialog.open(ChAvatarimgComponent,dialogConfig);
     }
 
 }
