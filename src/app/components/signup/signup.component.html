@@ -22,7 +22,7 @@
         <form [formGroup]="signupForm" style="width: 100%; padding: 50px;" (ngSubmit)="singup()" novalidate>
             <h2 style="text-align: center; font-weight: bolder; margin-top: -20px;">SingUp</h2>
             <div *ngIf="selectedImage" style="display: flex; justify-content: center; align-items: center;">
-                <img [src]="selectedImage" alt="Selected Image"
+                <img [src]="selectedImage" class="card img" alt="Selected Image"
                     style="border-radius: 50%; width: 150px; height: 150px;">
             </div>
             <h3>Choose Avatar image</h3>
