@@ -1,16 +1,19 @@
-import { Component, PLATFORM_ID, Inject } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { ImageService } from '../../services/image.service';
 import { NgFor, NgIf } from '@angular/common';
-import { isPlatformBrowser } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ImageService } from '../../services/image.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-main',
+  selector: 'app-editimages',
   standalone: true,
   imports: [
     MatToolbarModule,
@@ -19,30 +22,35 @@ import { isPlatformBrowser } from '@angular/common';
     MatFormFieldModule,
     RouterLink,
     NgFor,
-    NgIf
+    NgIf,
+    FormsModule,
+    MatCardModule,
+    MatIconModule
   ],
-  templateUrl: './main.component.html',
-  styleUrl: './main.component.scss'
+  templateUrl: './editimages.component.html',
+  styleUrl: './editimages.component.scss'
 })
-export class MainComponent {
+export class EditimagesComponent {
   userId: any;
   avatar_img: any;
   name: any;
   email: any;
   images: any[] = [];
   aid: any;
-  id: any;
+  id : any;
 
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
     private imageService: ImageService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     if (typeof localStorage !== 'undefined') {
       this.getUsedetail();
-      this.getOnlyone();
+      this.getOnlyoneimage();
+      this.id = localStorage.getItem('image_id');
       this.aid = localStorage.getItem('aid');
       this.avatar_img = localStorage.getItem('avatar_img');
       this.name = localStorage.getItem('name');
@@ -73,18 +81,37 @@ export class MainComponent {
       });
   }
 
-  getOnlyone() {
-    this.aid = localStorage.getItem('aid');
-    this.imageService.getOnly(this.aid).subscribe(
-      data => {
-        this.images = data[0];
-        this.id = data[0]?.images_id; // Corrected line
-        localStorage.setItem('image_id', this.id); // Corrected line
-      },
-      error => {
-        console.error(error);
-      }
-    );
+  getOnlyoneimage() {
+    this.route.params.subscribe(params => {
+      const id = params['id']; 
+      this.imageService.getOnlyimage(id).subscribe(
+        data => {
+          this.images = data[0];
+          this.id = data[0]?.images_id; // Corrected line
+          localStorage.setItem('image_id', this.id); // Corrected line
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    });
   }
+  
+  deleteImage() {
+    this.route.params.subscribe(params => {
+      const id = params['id']; 
+      console.log('Deleting image with ID:', id); 
+      this.imageService.delete(id).subscribe(
+        () => {
+          console.log('Image deleted successfully.');
+          this.router.navigate(['/main']);
+        },
+        error => {
+          console.error('Error deleting image:', error); 
+        }
+      );
+    });
+  }
+  
   
 }

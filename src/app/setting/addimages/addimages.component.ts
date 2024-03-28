@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 import { ImageService } from '../../services/image.service';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-addimages',
@@ -22,7 +23,8 @@ import { MatCardModule } from '@angular/material/card';
     NgFor,
     NgIf,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
   ],
   templateUrl: './addimages.component.html',
   styleUrl: './addimages.component.scss'
