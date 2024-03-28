@@ -15,11 +15,11 @@
             </div>
             <h3>Choose New Avatar image</h3>
             <input type="file" (change)="onFileSelected($event)" accept="image/*" placeholder="Choose Image"
-                style="margin-bottom: 20px;">
-            <mat-form-field>
+            formControlName="newAvatarImg" style="margin-bottom: 20px;">
+            <!-- <mat-form-field>
                 <mat-label>New Avatar Image</mat-label>
                 <input matInput placeholder="Enter New Avatar Image" formControlName="newAvatarImg">
-            </mat-form-field>
+            </mat-form-field> -->
             <div style="display: flex; justify-content: center;">
                 <button color="accent" [disabled]="AvatarForm.invalid" mat-raised-button type="submit">
                     <span>Change Avatar</span>
