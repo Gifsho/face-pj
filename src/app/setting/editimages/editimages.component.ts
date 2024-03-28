@@ -11,6 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ImageService } from '../../services/image.service';
 import { Router } from '@angular/router';
+import { ChImageComponent } from '../ch-image/ch-image.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-editimages',
@@ -43,7 +45,8 @@ export class EditimagesComponent {
     private authService: AuthService,
     private route: ActivatedRoute,
     private imageService: ImageService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -113,5 +116,11 @@ export class EditimagesComponent {
     });
   }
   
-  
+  chImage() {
+    const dialogConfig = new MatDialogConfig();
+    const id = this.id; 
+    dialogConfig.width = "1000px";
+    dialogConfig.width = "1000px";
+    this.dialog.open(ChImageComponent, dialogConfig);
+  }
 }

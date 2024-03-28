@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { ImageUploadService } from '../../services/upload-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addimages',
@@ -37,17 +38,20 @@ export class AddimagesComponent {
   email: any;
   images: any[] = [];
   aid: any;
+  downloadURL: any;
+  selectedImage: string | ArrayBuffer | null = null;
 
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
     private uploadService: ImageUploadService,
+    private imageService: ImageService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     if (typeof localStorage !== 'undefined') {
       this.getUsedetail();
-
       this.aid = localStorage.getItem('aid');
       this.avatar_img = localStorage.getItem('avatar_img');
       this.name = localStorage.getItem('name');
@@ -78,23 +82,49 @@ export class AddimagesComponent {
       });
   }
 
-  getAdd() {
-    
-  }
-
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
-    this.uploadFile(file);
+    if (file) {
+      this.uploadImage(file);
+    }
   }
 
-  uploadFile(file: File): void {
+  uploadImage(file: File): void {
     this.uploadService.uploadFile(file)
       .then(downloadURL => {
         console.log('File uploaded successfully. Download URL:', downloadURL);
-        // ทำสิ่งที่ต้องการกับ downloadURL เช่น แสดงลิงก์ไปยังไฟล์ที่อัปโหลด
+        this.downloadURL = downloadURL;
       })
       .catch(error => {
         console.error('Error uploading file:', error);
       });
+    if (file) {
+      // Set selected image URL for preview
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target?.result) {
+          this.selectedImage = e.target.result;
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  getAdd(): void {
+    if (this.downloadURL) {
+      const image_url = this.downloadURL;
+      const fashmash_id = this.aid = localStorage.getItem('aid');
+      this.imageService.getAdd(image_url, fashmash_id).subscribe(
+        () => {
+          console.log('Image added successfully');
+          this.router.navigate(['/main']);
+        },
+        error => {
+          console.error('Error adding image:', error);
+        }
+      );
+    } else {
+      console.error('Download URL is null.');
+    }
   }
 }

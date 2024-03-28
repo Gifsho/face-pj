@@ -39,20 +39,22 @@
         </div>
     </button>
 
-    <div style="display: flex; align-items: center; margin-top: 50px; justify-content: center;">
-        <img [src]="avatar_img" class="img_box" height="400px">
-        <div class="card p-3" style="height: 400px; width: 500px; background: blue;">
+    <div style="display: flex; align-items: center; margin-top: 50px; justify-content: center; margin-bottom: 20px;">
+        <div class="card p-3" style="height: 400px; width: 500px; background: #ff0000a7;">
             <a routerLink="/main">
                 <mat-icon aria-hidden="false" fontIcon="arrow_back"></mat-icon>
             </a>
-            <h2>User : {{ name }}</h2>
-            <h2>Email : {{ email }}</h2>
-            <div>
-                <input type="file" (change)="onFileSelected($event)">
-            </div>
-            <h2>Password : </h2>
-            <h2>VerifyPassword : </h2>
-            <button mat-raised-button type="submit">Submit</button>
+            <form (ngSubmit)="getAdd()">
+                <div *ngIf="selectedImage" style="display: flex; justify-content: center; align-items: center;">
+                    <img [src]="selectedImage" class="card img" alt="Selected Image"
+                        style="border-radius: 50%; width: 150px; height: 150px;">
+                </div>
+                <div class="row" style="display: flex; justify-content: center;">
+                    <input type="file" (change)="onFileSelected($event)" style="border: black;">
+                    <button mat-raised-button type="submit" style="width: 40%; margin-top: 30px;">Submit</button>
+                </div>
+                
+            </form> 
         </div>
     </div>
 </div>

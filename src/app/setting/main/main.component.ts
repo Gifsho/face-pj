@@ -11,6 +11,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ChangpasswordComponent } from '../../editprofile/changpassword/changpassword.component';
 import { ChnameComponent } from '../../editprofile/chname/chname.component';
 import { ChAvatarimgComponent } from '../../editprofile/ch-avatarimg/ch-avatarimg.component';
+import { AddimagesComponent } from '../addimages/addimages.component';
 
 
 @Component({
@@ -96,21 +97,20 @@ export class MainComponent {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = "1000px";
     dialogConfig.width = "1000px";
-    this.dialog.open(ChangpasswordComponent,dialogConfig);
+    this.dialog.open(ChangpasswordComponent, dialogConfig);
   }
 
   changename() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = "1000px";
     dialogConfig.width = "1000px";
-    this.dialog.open(ChnameComponent,dialogConfig);
-    }
+    this.dialog.open(ChnameComponent, dialogConfig);
+  }
 
-    changeAvatar() {
+  changeAvatar() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = "1000px";
     dialogConfig.width = "1000px";
-    this.dialog.open(ChAvatarimgComponent,dialogConfig);
-    }
-
+    this.dialog.open(ChAvatarimgComponent, dialogConfig);
+  }
 }

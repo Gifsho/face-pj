@@ -39,11 +39,11 @@ export class ImageService {
     return this.http.get(url);
   }
 
-  getAdd(image: any, aid: number): Observable<any> {
+  getAdd(image_url: string, facemash_id: any): Observable<any> {
     const url = `${this.apiUrl}/add-image`; 
-    const params = { image: image, aid: aid.toString() };
-    return this.http.get(url, { params: params });
-  }
+    const params = { image_url: image_url, facemash_id: facemash_id };
+    return this.http.post(url, params);
+  } 
 
   delete(mid: any): Observable<any> {
     const url = `${this.apiUrl}/delete/${mid}`; 
