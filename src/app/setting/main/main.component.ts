@@ -7,7 +7,9 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ImageService } from '../../services/image.service';
 import { NgFor, NgIf } from '@angular/common';
-import { isPlatformBrowser } from '@angular/common';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ChangpasswordComponent } from '../../editprofile/changpassword/changpassword.component';
+
 
 @Component({
   selector: 'app-main',
@@ -36,6 +38,7 @@ export class MainComponent {
     private authService: AuthService,
     private route: ActivatedRoute,
     private imageService: ImageService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -83,5 +86,11 @@ export class MainComponent {
       }
     );
   }
-  
+
+  changpw() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "550px";
+    this.dialog.open(ChangpasswordComponent,dialogConfig);
+  }
+
 }
