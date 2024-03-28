@@ -39,12 +39,13 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   responseMessage: any;
   avatar_img: string | null = null;
+  selectedImage: string | ArrayBuffer | null = null;
 
   constructor(private authService: AuthService,
     private router:Router,
     private snackbarService:SnackbarService,
     private uploadService: ImageUploadService,) {
-this.signupForm = this.createFormGroup();
+    this.signupForm = this.createFormGroup();
 }
 
   ngOnInit(): void {
@@ -95,5 +96,16 @@ this.signupForm = this.createFormGroup();
       .catch(error => {
         console.error('Error uploading file:', error);
       });
+      if (file) {
+        // Set selected image URL for preview
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          if (e.target?.result) {
+            this.selectedImage = e.target.result;
+          }
+        };
+        reader.readAsDataURL(file);
   }
+ 
+}
 }
