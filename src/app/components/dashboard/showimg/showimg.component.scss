@@ -1,9 +1,14 @@
 .image-container {
-    display: flex; /* เปลี่ยนจาก grid เป็น flex */
-    flex-wrap: wrap; /* ให้รูปขึ้นบรรทัดใหม่เมื่อครบแถว */
-    justify-content: center; /* จัดให้รูปอยู่ตรงกลาง */
-    gap: 10px; /* กำหนดระยะห่างระหว่างรูป */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* จัดการช่องว่างระหว่างรูป */
 }
+
+.img-thumbnail {
+    width: calc(33.33% - 10px); /* คำนวณขนาดของรูปให้มีขนาดเท่ากันและมีช่องว่างระหว่างรูป */
+    margin-bottom: 10px; /* ช่องว่างด้านล่างของรูป */
+}
+
 
 .img-thumbnail {
     max-width: 150px; /* ลดขนาดของรูปลงเพื่อให้มีขนาดเล็กลง */
