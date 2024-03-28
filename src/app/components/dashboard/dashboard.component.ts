@@ -112,7 +112,6 @@ showimg(aid: any, name: any) {
   dialogConfig.panelClass = 'custom-dialog-container'; // เพิ่มคลาสเพื่อกำหนด CSS สำหรับ dialog container
   dialogConfig.data = { aid: aid,
                         name: name };
-  // dialogConfig.data = { name: name };
 
   this.dialog.open(ShowimgComponent,dialogConfig);
 }
