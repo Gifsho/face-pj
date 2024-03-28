@@ -107,7 +107,7 @@ async getaccount(): Promise<any[]> {
 
 showimg(aid: any) {
   const dialogConfig = new MatDialogConfig();
-  dialogConfig.width = "1000px";
+  dialogConfig.width = "auto";
   dialogConfig.data = { aid: aid };
 
   this.dialog.open(ShowimgComponent,dialogConfig);
