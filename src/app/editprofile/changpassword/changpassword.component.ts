@@ -1,28 +1,40 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators, ValidatorFn } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'; // Import CommonModule
 
 @Component({
   selector: 'app-changpassword',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule,
+            CommonModule],
   templateUrl: './changpassword.component.html',
   styleUrls: ['./changpassword.component.scss']
 
 })
-export class ChangpasswordComponent {
-  passwordForm = new FormGroup({
-    userId: new FormControl('', Validators.required),
-    oldPassword: new FormControl('', Validators.required),
-    newPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    confirmPassword: new FormControl('', Validators.required)
-  });
-  
-
+export class ChangpasswordComponent implements OnInit {
+ 
   errorMessage: string = '';
+  passwordForm: FormGroup;
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.passwordForm = this.createFormGroup();
+  }
+
+  ngOnInit(): void {
+    this.passwordForm = this.createFormGroup();
+  }
+
+  createFormGroup(): FormGroup {
+    return new FormGroup({
+      userId: new FormControl('', Validators.required),
+      oldPassword: new FormControl('', Validators.required),
+      newPassword: new FormControl('', [Validators.required, Validators.minLength(7)]),
+      confirmPassword: new FormControl('', Validators.required)
+    });
+  }
 
   passwordMatchValidator(formGroup: FormGroup) {
     const newPassword = formGroup.get('newPassword')?.value;
