@@ -26,6 +26,7 @@ export class ChangpasswordComponent implements OnInit {
  
   errorMessage: string = '';
   passwordForm: FormGroup;
+  aid: any;
 
 
   constructor(private http: HttpClient,
@@ -35,6 +36,9 @@ export class ChangpasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.passwordForm = this.createFormGroup();
+
+    this.aid = localStorage.getItem('aid');
+    console.log(this.aid);
   }
 
   createFormGroup(): FormGroup {

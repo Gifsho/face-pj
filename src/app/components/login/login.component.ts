@@ -76,8 +76,8 @@ export class LoginComponent implements OnInit {
 
         this.responseMessage = response?.message;
         this.actype = response?.actype;
-        console.log(response?.message);
-        console.log(response?.actype);
+        // console.log(response?.message);
+        // console.log(response?.actype);
         this.snackbarService.openSnackBar(this.responseMessage, "");
         if (this.responseMessage === "login successfully") {
           if (this.actype == "user") {
