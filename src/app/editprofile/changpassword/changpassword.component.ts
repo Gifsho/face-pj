@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-changpassword',
@@ -27,7 +28,8 @@ export class ChangpasswordComponent implements OnInit {
   passwordForm: FormGroup;
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private snackbarService: SnackbarService) {
     this.passwordForm = this.createFormGroup();
   }
 
@@ -62,6 +64,7 @@ export class ChangpasswordComponent implements OnInit {
       .subscribe({
         next: () => {
           console.log('Password changed successfully.');
+          this.snackbarService.openSnackBar('Password changed successfully.', 'success');
           this.passwordForm.reset();
           this.errorMessage = '';
         },
@@ -72,6 +75,7 @@ export class ChangpasswordComponent implements OnInit {
           } else {
             this.errorMessage = 'An error occurred. Please try again later.';
           }
+          this.snackbarService.openSnackBar(this.errorMessage, 'error');
         }
       });
   }
