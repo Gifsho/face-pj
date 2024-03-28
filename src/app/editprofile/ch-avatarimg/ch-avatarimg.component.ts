@@ -45,14 +45,14 @@ export class ChAvatarimgComponent implements OnInit {
       }
     }
 
-    if (this.avatar_img !== null) {
-      const newAvatarImgControl = this.AvatarForm.get('newAvatarImg');
-      if (newAvatarImgControl !== null) { // Null check
-        newAvatarImgControl.setValue(this.avatar_img);
-        this.selectedImage = this.avatar_img;
-      }
-    }
-    
+    // if (this.avatar_img !== null) {
+    //   const newAvatarImgControl = this.AvatarForm.get('newAvatarImg');
+    //   if (newAvatarImgControl !== null) { // Null check
+    //     newAvatarImgControl.setValue(this.avatar_img);
+        
+    //   }
+    // }
+    this.selectedImage = this.avatar_img;
   }
 
   createFormGroup(): FormGroup {
@@ -92,8 +92,17 @@ export class ChAvatarimgComponent implements OnInit {
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     const reader = new FileReader();
+
     reader.onload = (e: any) => {
       this.selectedImage = e.target.result;
+
+      if (file !== null) {
+        const newAvatarImgControl = this.AvatarForm.get('newAvatarImg');
+        if (newAvatarImgControl !== null) { // Null check
+          newAvatarImgControl.setValue(file);
+        }
+      }
+
     };
     reader.readAsDataURL(file);
   }
