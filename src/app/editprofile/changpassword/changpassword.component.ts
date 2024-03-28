@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'; // Import CommonModule
+import { CommonModule } from '@angular/common'; 
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-changpassword',
   standalone: true,
   imports: [ReactiveFormsModule,
-            CommonModule],
+            CommonModule,
+            MatToolbarModule],
   templateUrl: './changpassword.component.html',
   styleUrls: ['./changpassword.component.scss']
 
