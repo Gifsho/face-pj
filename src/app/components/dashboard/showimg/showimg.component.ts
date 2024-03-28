@@ -16,11 +16,11 @@ export class ShowimgComponent implements OnInit {
 
   imgAll: any = [];
   aid: any;
-  name: any;
+  // name: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.aid = data.aid;
-    this.name = data.name;
+    // this.name = data.name;
   }
 
   ngOnInit(): void {
