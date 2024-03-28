@@ -58,7 +58,7 @@ export class ChangpasswordComponent implements OnInit {
     const body = this.passwordForm.value;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    this.http.post<any>('https://facemashbackend.onrender.com/auth/updatePassword', body, { headers })
+    this.http.put<any>('https://facemashbackend.onrender.com/auth/updatePassword', body, { headers })
       .subscribe({
         next: () => {
           console.log('Password changed successfully.');
