@@ -21,14 +21,13 @@
     <div class="card" style="background: #ffffff5b; width: 35%; height: 470px;">
         <form [formGroup]="signupForm" style="width: 100%; padding: 50px;" (ngSubmit)="singup()" novalidate>
             <h2 style="text-align: center; font-weight: bolder; margin-top: -20px;">SingUp</h2>
-            <h3>Choose Avatar image</h3>
-            <input type="file" (change)="onFileSelected($event)" accept="image/*" placeholder="Choose Image"
-                formControlName="avatar_img" style="margin-bottom: 20px;">
-            <div *ngIf="selectedImage">
+            <div *ngIf="selectedImage" style="display: flex; justify-content: center; align-items: center;">
                 <img [src]="selectedImage" alt="Selected Image"
                     style="border-radius: 50%; width: 150px; height: 150px;">
             </div>
-
+            <h3>Choose Avatar image</h3>
+            <input type="file" (change)="onFileSelected($event)" accept="image/*" placeholder="Choose Image"
+                formControlName="avatar_img" style="margin-bottom: 20px;">
             <mat-form-field>
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Enter Name" formControlName="name">
