@@ -9,6 +9,7 @@ import { ImageService } from '../../services/image.service';
 import { NgFor, NgIf } from '@angular/common';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ChangpasswordComponent } from '../../editprofile/changpassword/changpassword.component';
+import { ChnameComponent } from '../../editprofile/chname/chname.component';
 
 
 @Component({
@@ -96,5 +97,12 @@ export class MainComponent {
     dialogConfig.width = "1000px";
     this.dialog.open(ChangpasswordComponent,dialogConfig);
   }
+
+  changname() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "1000px";
+    dialogConfig.width = "1000px";
+    this.dialog.open(ChnameComponent,dialogConfig);
+    }
 
 }
