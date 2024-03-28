@@ -7,7 +7,7 @@
 <div class="image-container">
     <div *ngIf="imgAll && imgAll.length > 0">
         <div *ngFor="let img of imgAll">
-            <img [src]="img.image_url" alt="Image" class="img-thumbnail">
+            <img [src]="img.image_url" alt="Image" class="img-thumbnail" style="display: flex;">
         </div>
     </div>
 </div>

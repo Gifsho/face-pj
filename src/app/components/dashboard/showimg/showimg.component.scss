@@ -1,13 +1,8 @@
-.image-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* จัดการช่องว่างระหว่างรูป */
-}
-
-.img-thumbnail {
-    width: calc(33.33% - 10px); /* คำนวณขนาดของรูปให้มีขนาดเท่ากันและมีช่องว่างระหว่างรูป */
-    margin-bottom: 10px; /* ช่องว่างด้านล่างของรูป */
-}
+// .image-container {
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: space-between; /* จัดการช่องว่างระหว่างรูป */
+// }
 
 
 .img-thumbnail {
