@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { SnackbarService } from '../../services/snackbar.service';
+import { ImageUploadService } from '../../services/upload-service.service';
 
 @Component({
   selector: 'app-ch-avatarimg',
@@ -27,9 +28,11 @@ export class ChAvatarimgComponent implements OnInit {
   aid: any;
   avatar_img: any;
   selectedImage: any;
+  newAvatarImg: any;
 
   constructor(private http: HttpClient,
-    private snackbarService: SnackbarService) { }
+    private snackbarService: SnackbarService,
+    private uploadService: ImageUploadService) { }
 
   ngOnInit(): void {
     this.AvatarForm = this.createFormGroup();
@@ -82,25 +85,34 @@ export class ChAvatarimgComponent implements OnInit {
   }
 
 
-  onFileSelected(event: any) {
+  onFileSelected(event: any): void {
     const file: File = event.target.files[0];
+    if (file) {
+      this.uploadFile(file);
+    }
+  }
+  
+  uploadFile(file: File): void {
+    this.uploadService.uploadFile(file)
+      .then(downloadURL => {
+        console.log('File uploaded successfully. Download URL:', downloadURL);
+        this.newAvatarImg = downloadURL;
+        this.AvatarForm.get('newAvatarImg')?.setValue(downloadURL);
+      })
+      .catch(error => {
+        console.error('Error uploading file:', error);
+      });
+  
+    // Set selected image URL for preview
     const reader = new FileReader();
-    console.log(reader);
-
-    reader.onload = (e: any) => {
-      this.selectedImage = e.target.result;
-      console.log(this.selectedImage);
-
-      if (file !== null) {
-        const newAvatarImgControl = this.AvatarForm.get('newAvatarImg');
-        if (newAvatarImgControl !== null) { // Null check
-          newAvatarImgControl.setValue(this.selectedImage);
-        }
+    reader.onload = (e) => {
+      if (e.target?.result) {
+        this.selectedImage = e.target.result;
       }
-
     };
     reader.readAsDataURL(file);
   }
+  
 
 
 }

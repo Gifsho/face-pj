@@ -1,6 +1,6 @@
 <mat-toolbar>
     <div style="text-align: center;">
-        <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">Images</span></a>
+        <a routerLink="/"><span style="font-size: 33px; font-weight: bolder;">Images owner: {{ name }}</span></a>
     </div>
 </mat-toolbar>
 
@@ -13,5 +13,5 @@
 
 <div *ngIf="!imgAll || imgAll.length === 0">
     <!-- แสดงข้อความข้อผิดพลาด -->
-    <p>No images found.</p>
+    <h1 style="text-align: center;">No images found.</h1>
 </div>

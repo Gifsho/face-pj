@@ -16,12 +16,15 @@ export class ShowimgComponent implements OnInit {
 
   imgAll: any = [];
   aid: any;
+  name: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.aid = data.aid;
+    this.name = data.name;
   }
 
   ngOnInit(): void {
+
     fetch(`https://facemashbackend.onrender.com/img/fetchAllUserImg/${this.aid}`)
       .then((response: Response) => {
         if (!response.ok) {
@@ -30,6 +33,8 @@ export class ShowimgComponent implements OnInit {
         return response.json();
       })
       .then((data: any) => {
+        // console.log(data);
+        // console.log(data[0]);
         this.imgAll = data[0];
         console.log(this.imgAll);
       })

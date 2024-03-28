@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <span style="margin-left: 10px;">
-                                            <h4 style="font-weight: bolder;">UserNameOwn:</h4>
+                                            <h4 style="font-weight: bolder;">UserNameOwn: {{ image.name }}</h4>
                                             {{ image.image_id }}
                                             <p>Previous Rank: {{ image.id | previousRank: previousTopTenImages }}</p>
 
