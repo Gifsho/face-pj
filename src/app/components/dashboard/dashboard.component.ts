@@ -107,7 +107,9 @@ async getaccount(): Promise<any[]> {
 
 showimg(aid: any) {
   const dialogConfig = new MatDialogConfig();
-  dialogConfig.width = "auto";
+  dialogConfig.width = "80%"; // กำหนดความกว้างของ dialog เป็น 80% ของหน้าจอ
+  dialogConfig.height = "80%"; // กำหนดความสูงของ dialog เป็น 80% ของหน้าจอ
+  dialogConfig.panelClass = 'custom-dialog-container'; // เพิ่มคลาสเพื่อกำหนด CSS สำหรับ dialog container
   dialogConfig.data = { aid: aid };
 
   this.dialog.open(ShowimgComponent,dialogConfig);
