@@ -6,6 +6,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { NgFor } from '@angular/common';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ShowimgComponent } from './showimg/showimg.component'; 
 
 
 
@@ -24,12 +26,14 @@ import { NgFor } from '@angular/common';
 })
 export class DashboardComponent implements OnInit {
 
+
   userId: any;
   avatar_img: any;
   name: any;
   email: any;
   aid: any;
   acall: any[] = [];
+  dialog: any;
 
   constructor(private authService: AuthService,
     private route: ActivatedRoute) { }
@@ -101,6 +105,12 @@ async getaccount(): Promise<any[]> {
 }
 
 
+showimg() {
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.width = "1000px";
+  dialogConfig.width = "1000px";
+  this.dialog.open(ShowimgComponent,dialogConfig);
+}
 
 
   
