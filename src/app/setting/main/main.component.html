@@ -46,8 +46,7 @@
                 <div class="row p-3">
                     <ng-container *ngFor="let image of images; let i = index">
                         <div class="col-md-3 mb-2">
-                            <a [routerLink]="['/editimage', image.image_id]"><img [src]="image.image_url" height="250px"
-                                    width="200px" class="img_box" style="border-radius: 10px;"></a>
+                            <a [routerLink]="['/editimage', image.image_id]"><img [src]="image.image_url" height="250px" width="200px" class="img_box" style="border-radius: 10px;"></a>
                         </div>
                         <!-- เมื่อแสดงครบรูปแล้ว ให้แสดงรูปภาพเพิ่มเติม -->
                         <ng-container *ngIf="i === images.length - 1 && images && images.length < 5">
@@ -94,8 +93,8 @@
                     <h2 class="textW">Profile at {{ name }}</h2>
                     <p class="textW">email : {{ email }}</p>
                     <p class="textW">name : {{ name }}</p>
-                    <button class="textW-btn" (click)="changpw()">Change Password</button>
-                    <button class="textW-btn" (click)="changname()">Change Name</button>
+                    <a class="textW" (click)="changpw()">change password</a>
+                    <a class="textW" (click)="changname()">change name</a>
                 </div>
             </div>
         </div>
