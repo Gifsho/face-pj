@@ -10,6 +10,7 @@ import { ImageService } from '../../services/image.service';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { ImageUploadService } from '../../services/upload-service.service';
 
 @Component({
   selector: 'app-addimages',
@@ -24,7 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
     NgIf,
     FormsModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
   ],
   templateUrl: './addimages.component.html',
   styleUrl: './addimages.component.scss'
@@ -40,6 +41,7 @@ export class AddimagesComponent {
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
+    private uploadService: ImageUploadService,
   ) { }
 
   ngOnInit(): void {
@@ -79,12 +81,20 @@ export class AddimagesComponent {
   getAdd() {
     
   }
-  // onFileSelected(event: any){
-  //   const file: File = event.target.files[0];
-  //   if (file) {
-      
-  //       image_url: file.name // เซ็ตค่าชื่อไฟล์ให้กับฟิลด์ avatar_img
-      
-  //   }
-  // }
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    this.uploadFile(file);
+  }
+
+  uploadFile(file: File): void {
+    this.uploadService.uploadFile(file)
+      .then(downloadURL => {
+        console.log('File uploaded successfully. Download URL:', downloadURL);
+        // ทำสิ่งที่ต้องการกับ downloadURL เช่น แสดงลิงก์ไปยังไฟล์ที่อัปโหลด
+      })
+      .catch(error => {
+        console.error('Error uploading file:', error);
+      });
+  }
 }

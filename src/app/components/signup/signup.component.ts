@@ -13,6 +13,7 @@ import { SnackbarService } from '../../services/snackbar.service';
 import { GlobalConstants } from '../../global/global-constants';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { CommonModule } from '@angular/common';
+import { ImageUploadService } from '../../services/upload-service.service';
 
 
 @Component({
@@ -37,14 +38,14 @@ import { CommonModule } from '@angular/common';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   responseMessage: any;
-  selectedImage: string | ArrayBuffer | null = null; // Property to hold selected image URL
-
+  avatar_img: string | null = null;
 
   constructor(private authService: AuthService,
-              private router:Router,
-              private snackbarService:SnackbarService) {
-    this.signupForm = this.createFormGroup();
-  }
+    private router:Router,
+    private snackbarService:SnackbarService,
+    private uploadService: ImageUploadService,) {
+this.signupForm = this.createFormGroup();
+}
 
   ngOnInit(): void {
     this.signupForm = this.createFormGroup();
@@ -54,52 +55,45 @@ export class SignupComponent implements OnInit {
     return new FormGroup({
       avatar_img: new FormControl("", [Validators.required]),
       name: new FormControl("", [Validators.required, Validators.pattern(GlobalConstants.nameRegex)]),
-      email: new FormControl("", [Validators.required, Validators.pattern(GlobalConstants.emailRegex)]),//ตรวจสอบค่าที่รับมามีรูปแบบของอีเมล์
+      email: new FormControl("", [Validators.required, Validators.pattern(GlobalConstants.emailRegex)]),
       password: new FormControl("", [
         Validators.required,
         Validators.minLength(7)]),
-    })
+    });
   }
 
   singup(): void {
-    this.authService
-      .signup(this.signupForm.value)
-      .subscribe((response:any)=> {
+    this.authService.signup(this.signupForm.value)
+      .subscribe((response: any) => {
         this.responseMessage = response?.message;
-        this.snackbarService.openSnackBar(this.responseMessage,"");
+        this.snackbarService.openSnackBar(this.responseMessage, "");
         this.router.navigate(['/login']);
-      },(error) =>{
-        if(error.error?.message)
-        {
+      }, (error) => {
+        if(error.error?.message) {
           this.responseMessage = error.error?.message;
-        }else{
+        } else {
           this.responseMessage = GlobalConstants.genericError;
         }
-        this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
-      }
-    );
+        this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+      });
   }
 
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
     if (file) {
-      // Set selected image URL for preview
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e.target?.result) {
-          this.selectedImage = e.target.result;
-        }
-      };
-      reader.readAsDataURL(file);
-  
-      // this.signupForm.patchValue({
-      //   avatar_img: file.name // Set file name to the avatar_img field
-      // });
+      this.uploadFile(file);
     }
   }
-  
-  
-  
 
-
+  uploadFile(file: File): void {
+    this.uploadService.uploadFile(file)
+      .then(downloadURL => {
+        console.log('File uploaded successfully. Download URL:', downloadURL);
+        this.avatar_img = downloadURL;
+        this.signupForm.get('avatar_img')?.setValue(downloadURL);
+      })
+      .catch(error => {
+        console.error('Error uploading file:', error);
+      });
+  }
 }

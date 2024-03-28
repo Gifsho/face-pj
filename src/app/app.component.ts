@@ -8,7 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [RouterOutlet, NavigationComponent,HttpClientModule]
+    imports: [
+      RouterOutlet, 
+      NavigationComponent,
+      HttpClientModule
+    ]
 })
 export class AppComponent {
   title = 'posts';

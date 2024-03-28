@@ -47,9 +47,9 @@
             </a>
             <h2>User : {{ name }}</h2>
             <h2>Email : {{ email }}</h2>
-            <h2>Image :
-                <!-- <input type="file"  accept="image/*" placeholder="Choose Image" formControlName="image_url"  style="margin-bottom: 20px;"> -->
-            </h2>
+            <div>
+                <input type="file" (change)="onFileSelected($event)">
+            </div>
             <h2>Password : </h2>
             <h2>VerifyPassword : </h2>
             <button mat-raised-button type="submit">Submit</button>
