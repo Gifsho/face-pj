@@ -45,12 +45,6 @@ export class ChangpasswordComponent implements OnInit {
     });
   }
 
-  // passwordMatchValidator(formGroup: FormGroup) {
-  //   const newPassword = formGroup.get('newPassword')?.value;
-  //   const confirmPassword = formGroup.get('confirmPassword')?.value;
-  //   return newPassword === confirmPassword ? null : { mismatch: true };
-  // }
-  
 
   changePassword() {
     if (this.passwordForm.invalid) {
