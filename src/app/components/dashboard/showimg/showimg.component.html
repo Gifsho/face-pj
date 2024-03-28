@@ -7,7 +7,7 @@
 <div class="image-container">
     <div *ngFor="let img of imgAll" class="image-item">
         <img [src]="img.image_url" alt="Image" class="image">
-        <p>points:{{ img.points }}</p>
+        <p>points: {{ img.points | number: '1.2-2' }}</p>
     </div>
 </div>
 
