@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-showimg',
@@ -11,11 +12,13 @@ import { Component, OnInit } from '@angular/core';
 export class ShowimgComponent implements OnInit {
 
   imgAll: any = [];
-  aid:any; 
+  aid: any;
 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    this.aid = data.aid;
+  }
 
   ngOnInit(): void {
-    this.aid = localStorage.getItem('aid');
 
     fetch(`https://facemashbackend.onrender.com/img/fetchAllUserImg/${this.aid}`)
       .then((response: Response) => {
@@ -28,7 +31,7 @@ export class ShowimgComponent implements OnInit {
         // this.imgAll = data[1];
         console.log(data);
         this.imgAll = data[0];
-        console.log(this.imgAll); 
+        console.log(this.imgAll);
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
