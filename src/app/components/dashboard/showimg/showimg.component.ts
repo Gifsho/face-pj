@@ -1,11 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 @Component({
   selector: 'app-showimg',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,
+            MatToolbarModule],
   templateUrl: './showimg.component.html',
   styleUrl: './showimg.component.scss'
 })
