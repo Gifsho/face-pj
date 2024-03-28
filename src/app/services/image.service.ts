@@ -34,6 +34,11 @@ export class ImageService {
     return this.http.get(url);
   }
 
+  getAdd(image: any, aid: number): Observable<any> {
+    const url = `${this.apiUrl}/add-image`; 
+    const params = { image: image, aid: aid.toString() };
+    return this.http.get(url, { params: params });
+  }
   // fetchTopTenUser7day(): Observable<any[]> {
   //   const url = `${this.apiUrl}/topTenUser7day`;
   //   return this.http.get<any[]>(url);

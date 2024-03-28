@@ -74,12 +74,15 @@ export class AddimagesComponent {
       });
   }
 
+  getAdd() {
+    
+  }
   // onFileSelected(event: any){
   //   const file: File = event.target.files[0];
   //   if (file) {
-  //     this.signupForm.patchValue({
-  //       avatar_img: file.name // เซ็ตค่าชื่อไฟล์ให้กับฟิลด์ avatar_img
-  //     });
+      
+  //       image_url: file.name // เซ็ตค่าชื่อไฟล์ให้กับฟิลด์ avatar_img
+      
   //   }
   // }
 }
