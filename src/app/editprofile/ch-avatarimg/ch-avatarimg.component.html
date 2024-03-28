@@ -15,7 +15,7 @@
             <h2 style="text-align: center; font-weight: bolder;">Change Image</h2>
             <div>
                 <label for="newAvatarImg">Change Image</label>
-                <input type="file" id="newAvatarImg" (change)="onFileSelected($event)" accept="image/*">
+                <input type="file" formControlName="newAvatarImg" (change)="onFileSelected($event)" accept="image/*">
             </div>
             <button type="submit" [disabled]="AvatarForm.invalid">Change Image</button>
         </form>
