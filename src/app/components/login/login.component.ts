@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   responseMessage: any;
   actype: any;
+  errorMessage: string = '';
 
   constructor(private authService: AuthService,
     private router: Router,
@@ -75,8 +76,8 @@ export class LoginComponent implements OnInit {
 
         this.responseMessage = response?.message;
         this.actype = response?.actype;
-        console.log(response?.message);
-        console.log(response?.actype);
+        // console.log(response?.message);
+        // console.log(response?.actype);
         this.snackbarService.openSnackBar(this.responseMessage, "");
         if (this.responseMessage === "login successfully") {
           if (this.actype == "user") {
@@ -88,12 +89,13 @@ export class LoginComponent implements OnInit {
           this.router.navigate(["login"]);
         }
       }, (error) => {
-        if (error.error?.message) {
-          this.responseMessage = error.error?.message;
+        console.error('Error occurred:', error);
+        if (error.status === 401) {
+          this.errorMessage = 'Wrong password!';
         } else {
-          this.responseMessage = GlobalConstants.genericError;
+          this.errorMessage = 'An error occurred. Please try again later.';
         }
-        this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error);
+        this.snackbarService.openSnackBar(this.errorMessage, 'error');
       }
       );
   }
