@@ -19,7 +19,7 @@ import { ShowimgComponent } from './showimg/showimg.component';
     MatInputModule,
     MatFormFieldModule,
     RouterLink,
-    NgFor
+    NgFor,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
@@ -33,10 +33,10 @@ export class DashboardComponent implements OnInit {
   email: any;
   aid: any;
   acall: any[] = [];
-  dialog: any;
 
   constructor(private authService: AuthService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private dialog: MatDialog, ){ }
 
 
   ngOnInit(): void {
