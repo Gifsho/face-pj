@@ -4,13 +4,14 @@
     </div>
 </mat-toolbar>
 
-<div *ngIf="selectedImage">
-    <img [src]="selectedImage" alt="Selected Image" style="border-radius: 50%; width: 150px; height: 150px;">
-</div>
 
 <div class="container" style="display: flex; justify-content: center; margin-top: 100px;">
     <div class="card" style="background: #ffffff5b; width: 35%; height: 400px;">
         <form [formGroup]="AvatarForm" (ngSubmit)="changeAvatarImg()" style="width: 100%; padding: 50px;" novalidate>
+            <div *ngIf="selectedImage" style="display: flex; justify-content: center; align-items: center;">
+                <img [src]="selectedImage" alt="Selected Image"
+                    style="border-radius: 50%; width: 150px; height: 150px;">
+            </div>
             <h2 style="text-align: center; font-weight: bolder;">Change Image</h2>
             <div>
                 <label for="newAvatarImg">Choose Image</label>
