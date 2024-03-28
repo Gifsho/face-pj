@@ -19,7 +19,7 @@ import { ShowimgComponent } from './showimg/showimg.component';
     MatInputModule,
     MatFormFieldModule,
     RouterLink,
-    NgFor
+    NgFor,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
@@ -33,10 +33,10 @@ export class DashboardComponent implements OnInit {
   email: any;
   aid: any;
   acall: any[] = [];
-  dialog: any;
 
   constructor(private authService: AuthService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private dialog: MatDialog, ){ }
 
 
   ngOnInit(): void {
@@ -105,10 +105,13 @@ async getaccount(): Promise<any[]> {
 }
 
 
-showimg() {
+showimg(aid: any) {
   const dialogConfig = new MatDialogConfig();
-  dialogConfig.width = "1000px";
-  dialogConfig.width = "1000px";
+  dialogConfig.width = "80%"; // กำหนดความกว้างของ dialog เป็น 80% ของหน้าจอ
+  dialogConfig.height = "80%"; // กำหนดความสูงของ dialog เป็น 80% ของหน้าจอ
+  dialogConfig.panelClass = 'custom-dialog-container'; // เพิ่มคลาสเพื่อกำหนด CSS สำหรับ dialog container
+  dialogConfig.data = { aid: aid };
+
   this.dialog.open(ShowimgComponent,dialogConfig);
 }
 

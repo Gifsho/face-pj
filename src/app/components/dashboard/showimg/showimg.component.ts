@@ -1,21 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 @Component({
   selector: 'app-showimg',
   standalone: true,
-  imports: [],
+  imports: [CommonModule,
+            MatToolbarModule],
   templateUrl: './showimg.component.html',
   styleUrl: './showimg.component.scss'
 })
 export class ShowimgComponent implements OnInit {
 
   imgAll: any = [];
-  aid:any; 
+  aid: any;
 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    this.aid = data.aid;
+  }
 
   ngOnInit(): void {
-    this.aid = localStorage.getItem('aid');
-
     fetch(`https://facemashbackend.onrender.com/img/fetchAllUserImg/${this.aid}`)
       .then((response: Response) => {
         if (!response.ok) {
@@ -24,9 +30,8 @@ export class ShowimgComponent implements OnInit {
         return response.json();
       })
       .then((data: any) => {
-        // Store data in imgAll variable
-        this.imgAll = data;
-        console.log(this.imgAll); // Log the data stored in imgAll
+        this.imgAll = data[0];
+        console.log(this.imgAll);
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);

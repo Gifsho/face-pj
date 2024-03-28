@@ -45,13 +45,7 @@ export class ChAvatarimgComponent implements OnInit {
       }
     }
 
-    if (this.avatar_img !== null) {
-      const newNameControl = this.AvatarForm.get('newAvatarImg');
-      if (newNameControl !== null) { // Null check
-        newNameControl.setValue(this.selectedImage);
-        this.selectedImage = this.avatar_img;
-      }
-    }
+    this.selectedImage = this.avatar_img;
   }
 
   createFormGroup(): FormGroup {
@@ -91,8 +85,19 @@ export class ChAvatarimgComponent implements OnInit {
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     const reader = new FileReader();
+    console.log(reader);
+
     reader.onload = (e: any) => {
       this.selectedImage = e.target.result;
+      console.log(this.selectedImage);
+
+      if (file !== null) {
+        const newAvatarImgControl = this.AvatarForm.get('newAvatarImg');
+        if (newAvatarImgControl !== null) { // Null check
+          newAvatarImgControl.setValue(this.selectedImage);
+        }
+      }
+
     };
     reader.readAsDataURL(file);
   }
