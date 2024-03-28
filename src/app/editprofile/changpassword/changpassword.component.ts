@@ -40,15 +40,14 @@ export class ChangpasswordComponent implements OnInit {
       userId: new FormControl('', Validators.required),
       oldPassword: new FormControl('', Validators.required),
       newPassword: new FormControl('', [Validators.required, Validators.minLength(7)]),
-      confirmPassword: new FormControl('', Validators.required)
     });
   }
 
-  passwordMatchValidator(formGroup: FormGroup) {
-    const newPassword = formGroup.get('newPassword')?.value;
-    const confirmPassword = formGroup.get('confirmPassword')?.value;
-    return newPassword === confirmPassword ? null : { mismatch: true };
-  }
+  // passwordMatchValidator(formGroup: FormGroup) {
+  //   const newPassword = formGroup.get('newPassword')?.value;
+  //   const confirmPassword = formGroup.get('confirmPassword')?.value;
+  //   return newPassword === confirmPassword ? null : { mismatch: true };
+  // }
   
 
   changePassword() {
