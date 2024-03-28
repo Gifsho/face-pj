@@ -4,13 +4,20 @@
     </div>
 </mat-toolbar>
 
-<div class="image-container">
+<!-- <div class="image-container">
     <div *ngIf="imgAll && imgAll.length > 0">
         <div *ngFor="let img of imgAll" style="display: flex;">
-            <img [src]="img.image_url" alt="Image" class="img-thumbnail" >
+            <img [src]="img.image_url" alt="Image" class="img-thumbnail">
         </div>
     </div>
+</div> -->
+
+<div class="image-container">
+    <div *ngFor="let img of imgAll" class="image-item">
+        <img [src]="img.image_url" alt="Image" class="image">
+    </div>
 </div>
+
 
 <div *ngIf="!imgAll || imgAll.length === 0">
     <!-- แสดงข้อความข้อผิดพลาด -->
