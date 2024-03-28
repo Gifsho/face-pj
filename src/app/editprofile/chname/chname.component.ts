@@ -26,6 +26,7 @@ export class ChnameComponent implements OnInit {
   errorMessage: string = '';
   nameForm: FormGroup = new FormGroup({}); 
   aid: any;
+  name: any;
 
   constructor(private http: HttpClient,
     private snackbarService: SnackbarService) { }
@@ -34,12 +35,20 @@ export class ChnameComponent implements OnInit {
     this.nameForm = this.createFormGroup();
 
     this.aid = localStorage.getItem('aid');
+    this.name = localStorage.getItem('name');
     // console.log(this.aid);
 
     if (this.aid !== null) {
       const userIdControl = this.nameForm.get('userId');
       if (userIdControl !== null) { // Null check
         userIdControl.setValue(this.aid);
+      }
+    }
+
+    if (this.name !== null) {
+      const newNameControl = this.nameForm.get('newName');
+      if (newNameControl !== null) { // Null check
+        newNameControl.setValue(this.name);
       }
     }
   }
