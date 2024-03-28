@@ -33,6 +33,7 @@ export class MainComponent {
   email: any;
   images: any[] = [];
   aid: any;
+  id: any;
 
   constructor(
     private authService: AuthService,
@@ -80,6 +81,8 @@ export class MainComponent {
     this.imageService.getOnly(this.aid).subscribe(
       data => {
         this.images = data[0];
+        this.id = data[0]?.images_id; // Corrected line
+        localStorage.setItem('image_id', this.id); // Corrected line
       },
       error => {
         console.error(error);

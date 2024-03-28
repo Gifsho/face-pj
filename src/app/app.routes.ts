@@ -11,6 +11,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MainComponent } from './setting/main/main.component';
 import { AddimagesComponent } from './setting/addimages/addimages.component';
 import { ToptennullComponent } from './components/toptennull/toptennull.component';
+import { EditimagesComponent } from './setting/editimages/editimages.component';
 
 
 export const routes: Routes = [
@@ -24,5 +25,6 @@ export const routes: Routes = [
     { path: "dashboard", component: DashboardComponent },
     { path: "main", component: MainComponent},
     { path: "add-img", component: AddimagesComponent},
+    { path: "editimage/:id", component: EditimagesComponent},
     { path: "**", redirectTo: "" },
 ];

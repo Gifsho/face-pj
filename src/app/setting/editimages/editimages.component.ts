@@ -1,18 +1,19 @@
-import { NgFor, NgIf, isPlatformBrowser } from '@angular/common';
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { ImageService } from '../../services/image.service';
+import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ImageService } from '../../services/image.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-addimages',
+  selector: 'app-editimages',
   standalone: true,
   imports: [
     MatToolbarModule,
@@ -26,26 +27,30 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatIconModule
   ],
-  templateUrl: './addimages.component.html',
-  styleUrl: './addimages.component.scss'
+  templateUrl: './editimages.component.html',
+  styleUrl: './editimages.component.scss'
 })
-export class AddimagesComponent {
+export class EditimagesComponent {
   userId: any;
   avatar_img: any;
   name: any;
   email: any;
   images: any[] = [];
   aid: any;
+  id : any;
 
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
+    private imageService: ImageService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     if (typeof localStorage !== 'undefined') {
       this.getUsedetail();
-
+      this.getOnlyoneimage();
+      this.id = localStorage.getItem('image_id');
       this.aid = localStorage.getItem('aid');
       this.avatar_img = localStorage.getItem('avatar_img');
       this.name = localStorage.getItem('name');
@@ -76,15 +81,37 @@ export class AddimagesComponent {
       });
   }
 
-  getAdd() {
-    
+  getOnlyoneimage() {
+    this.route.params.subscribe(params => {
+      const id = params['id']; 
+      this.imageService.getOnlyimage(id).subscribe(
+        data => {
+          this.images = data[0];
+          this.id = data[0]?.images_id; // Corrected line
+          localStorage.setItem('image_id', this.id); // Corrected line
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    });
   }
-  // onFileSelected(event: any){
-  //   const file: File = event.target.files[0];
-  //   if (file) {
-      
-  //       image_url: file.name // เซ็ตค่าชื่อไฟล์ให้กับฟิลด์ avatar_img
-      
-  //   }
-  // }
+  
+  deleteImage() {
+    this.route.params.subscribe(params => {
+      const id = params['id']; 
+      console.log('Deleting image with ID:', id); 
+      this.imageService.delete(id).subscribe(
+        () => {
+          console.log('Image deleted successfully.');
+          this.router.navigate(['/main']);
+        },
+        error => {
+          console.error('Error deleting image:', error); 
+        }
+      );
+    });
+  }
+  
+  
 }

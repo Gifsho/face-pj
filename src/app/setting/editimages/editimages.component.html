@@ -39,20 +39,22 @@
         </div>
     </button>
 
-    <div style="display: flex; align-items: center; margin-top: 50px; justify-content: center;">
-        <img [src]="avatar_img" class="img_box" height="400px">
+    <div style="display: flex; align-items: center; margin-top: 50px; justify-content: center;" *ngFor="let image of images;">
+        <img src="{{ image.image_url }}" class="img_box" height=400px; width= 280px;>
         <div class="card p-3" style="height: 400px; width: 500px; background: blue;">
             <a routerLink="/main">
                 <mat-icon aria-hidden="false" fontIcon="arrow_back"></mat-icon>
             </a>
             <h2>User : {{ name }}</h2>
             <h2>Email : {{ email }}</h2>
-            <h2>Image :
-                <!-- <input type="file"  accept="image/*" placeholder="Choose Image" formControlName="image_url"  style="margin-bottom: 20px;"> -->
-            </h2>
+            <h2>Image : </h2>
             <h2>Password : </h2>
             <h2>VerifyPassword : </h2>
-            <button mat-raised-button type="submit">Submit</button>
+            <div style="display: flex; justify-content: space-evenly;">
+                <button mat-raised-button style="background-color: red;" (click)="deleteImage()">Delete Image</button>
+                <button mat-raised-button type="submit">Submit</button>
+            </div>
+            
         </div>
     </div>
 </div>

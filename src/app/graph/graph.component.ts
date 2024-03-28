@@ -41,6 +41,7 @@ export class GraphComponent implements OnInit {
   }
 
   getGraph(): void {
+    
     this.imageService.getAllImages().subscribe(
       (data: any[]) => {
         const sortedData = data[0].slice().sort((a: any, b: any) => b.points - a.points);

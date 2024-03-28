@@ -46,8 +46,7 @@
                 <div class="row p-3">
                     <ng-container *ngFor="let image of images; let i = index">
                         <div class="col-md-3 mb-2">
-                            <img [src]="image.image_url" height="250px" width="200px" class="img_box"
-                                style="border-radius: 10px;">
+                            <a [routerLink]="['/editimage', image.image_id]"><img [src]="image.image_url" height="250px" width="200px" class="img_box" style="border-radius: 10px;"></a>
                         </div>
                         <!-- เมื่อแสดงครบรูปแล้ว ให้แสดงรูปภาพเพิ่มเติม -->
                         <ng-container *ngIf="i === images.length - 1 && images && images.length < 5">
