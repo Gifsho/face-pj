@@ -1,15 +1,16 @@
-.img-thumbnail {
-    max-width: 100%; /* กำหนดให้รูปมีความกว้างสูงสุดเท่ากับ container */
-    height: auto; /* ให้รูปปรับขนาดตามอัตราส่วน */
-    display: block; /* กำหนดให้รูปเป็น block element เพื่อให้สามารถกำหนด margin และ padding ได้ */
-    margin: 10px auto; /* กำหนด margin ของรูป เพื่อให้รูปมีพื้นที่รอบข้าง */
+.image-container {
+    display: flex; /* เปลี่ยนจาก grid เป็น flex */
+    flex-wrap: wrap; /* ให้รูปขึ้นบรรทัดใหม่เมื่อครบแถว */
+    justify-content: center; /* จัดให้รูปอยู่ตรงกลาง */
+    gap: 10px; /* กำหนดระยะห่างระหว่างรูป */
 }
 
-.image-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* จำนวนคอลัมน์และขนาดของคอลัมน์จะปรับแต่งตามขนาดของ container */
-    gap: 20px; /* กำหนดระยะห่างระหว่างรูป */
+.img-thumbnail {
+    max-width: 150px; /* ลดขนาดของรูปลงเพื่อให้มีขนาดเล็กลง */
+    height: auto; /* ให้รูปปรับขนาดตามอัตราส่วน */
+    margin: 5px; /* ลดระยะห่างระหว่างรูป */
 }
+
 
 .custom-dialog-container {
     display: flex;
