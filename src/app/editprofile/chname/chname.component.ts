@@ -69,7 +69,7 @@ export class ChnameComponent implements OnInit {
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    this.http.post<any>('https://facemashbackend.onrender.com/auth/changeName', body, { headers })
+    this.http.put<any>('https://facemashbackend.onrender.com/auth/changeName', body, { headers })
       .subscribe({
         next: () => {
           console.log('Name changed successfully.');
